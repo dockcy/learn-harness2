@@ -94,8 +94,8 @@ CH.s3 = function (fr, t) {
   });
   const fade = 1 - ss(t, 31.4, 31.9);
   const tp = P(61, by + 10), pp = P(-30, by + 32), hp = P(-86, -10);
-  CH.callout(fr, tp[0], tp[1], 1060, 640, '木牌', ss(t, 25.7, 26.3) * fade, { sub: '告诉它工具怎么用' });
-  CH.callout(fr, pp[0], pp[1], 440, 600, '锦囊', ss(t, 26.6, 27.2) * fade, { sub: '遇事拆开看的招' });
-  CH.callout(fr, hp[0], hp[1], 440, 760, '蹄铁', ss(t, 27.5, 28.1) * fade, { sub: '钉死了的做法' });
+  CH.callout(fr, tp[0], tp[1], 1060, 640, '木牌', ss(t, 25.7, 26.3) * fade, { sub: '告诉它工具怎么用', plate: 1 });
+  CH.callout(fr, pp[0], pp[1], 440, 600, '锦囊', ss(t, 26.6, 27.2) * fade, { sub: '遇事拆开看的招', plate: 1 });
+  CH.callout(fr, hp[0], hp[1], 440, 760, '蹄铁', ss(t, 27.5, 28.1) * fade, { sub: '钉死了的做法', plate: 1 });
 };
 })();

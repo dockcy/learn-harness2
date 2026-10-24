@@ -205,6 +205,9 @@ CH.cross = (fr, x, y, s, a, col) => { if (a > 0) { fr.line(x - 14 * s, y - 14 * 
 CH.callout = (fr, x0, y0, x1, y1, str, a, o = {}) => {
   if (a <= 0) return; const k = E.out3(clamp(a * 1.4)), d = x1 >= x0 ? 1 : -1;
   fr.line(x0, y0, lerp(x0, x1, k), lerp(y0, y1, k), { w: 3, color: o.lc || C.ink, a: .8 * a }); fr.circle(x0, y0, 6, { fill: o.lc || C.ink, a });
+  if (o.plate) { const fs = o.size || 34, tw = Math.max(fr.measure(str, { font: o.font || 'sans', size: fs }), o.sub ? fr.measure(o.sub, { font: 'sans', size: 26 }) : 0) + 28,
+    th = fs * 1.3 + (o.sub ? 26 * 1.35 : 0), px = d > 0 ? x1 + d * 14 - 14 : x1 + d * 14 - tw + 14, top = y1 - fs * .7, pa = ss(a, .3, 1) * .94;
+    fr.rect(px, top, tw, th, { r: 8, fill: '#F7F0DF', a: pa }); fr.rect(px, top, tw, th, { r: 8, color: '#BFA678', w: 2, a: pa }); }
   fr.text(str, x1 + d * 14, y1 + 1, { font: o.font || 'sans', size: o.size || 34, color: o.color || C.ink, a: ss(a, .3, 1), align: d > 0 ? 'l' : 'r', shadow: o.shadow });
   if (o.sub) fr.text(o.sub, x1 + d * 14, y1 + (o.size || 34) * 1.15, { font: 'sans', size: 26, color: C.ink2, a: ss(a, .5, 1), align: d > 0 ? 'l' : 'r' });
 };
