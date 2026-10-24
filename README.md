@@ -6,6 +6,13 @@
 > Harness²：模型权重一个都不改，只改它身上那套“马具”（harness）——提示词、护栏、技能、脚本、插件——
 > 并且每做完一个任务，就把学到的经验带到下一个任务。
 
+## 🎬 寓言动画（约 3 分钟）
+
+嫌文字太长？先看动画短片 **《换马具》**：一则雪岭驿站的寓言，最后才揭晓它讲的就是 Harness²。
+
+- 成片：[film/harness2-film.mp4](film/harness2-film.mp4)
+- 分镜与源码：[film/](film/README.md)（用 [vibe-knowledge-film](https://github.com/HeyChengC/vibe-knowledge-film) 渲染）
+
 ## 🚀 在线阅读（交互网页）
 
 | 方式 | 地址 |
