@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-ppc" viewBox="0 0 1200 540" role="img" aria-label="改进会话的单步流程">
+<style>.svg-ppc text{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif;fill:#2a2723} .svg-ppc .m{font-family:Menlo, Consolas, "JetBrains Mono", monospace} .svg-ppc .bt{font-size:15px;font-weight:800} .svg-ppc .bd{font-size:12.5px;fill:#4a453e} .svg-ppc .bx{fill:#fffdf8;stroke:#6f685d;stroke-width:1.8} .svg-ppc .ok{fill:#eaf4ea;stroke:#3d7a46;stroke-width:2.2} .svg-ppc .bad{fill:#fbecea;stroke:#c4402b;stroke-width:2.2} .svg-ppc .fb{fill:#eef2f5;stroke:#52677a;stroke-width:1.8} .svg-ppc .ar{stroke:#6f685d;stroke-width:2.2;fill:none;marker-end:url(#ah-svg-ppc)} .svg-ppc .arr{stroke:#c4402b;stroke-width:2.2;fill:none;stroke-dasharray:7 5;marker-end:url(#ahr-svg-ppc)} .svg-ppc .stp.hl .shape{stroke:#c4402b;stroke-width:4} .svg-ppc .stp.dim{opacity:.28} .svg-ppc .stp{transition:opacity .3s}</style>
+<defs><marker id="ah-svg-ppc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6f685d"/></marker><marker id="ahr-svg-ppc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c4402b"/></marker></defs>
+<text x="20" y="32" text-anchor="start" style="font-size:21px;font-weight:800">一次“改进会话”在代码里怎么走：recursion._run_stage()</text>
+<text x="1180" y="32" text-anchor="end" style="font-size:13px;fill:#6b655b">INV / DOM / 合成，用的都是这同一条流程</text>
+<g class="stp" id="ppc-s1">
+<rect class="shape bx" x="30" y="80" width="255" height="104" rx="12"/>
+<text x="44" y="106" text-anchor="start" class="bt">① 搭证据树</text>
+<text x="44" y="129" text-anchor="start" class="bd">context.build(...)</text>
+<text x="44" y="148" text-anchor="start" class="bd">任务 + 基础执行轨迹 + 交付物</text>
+<text x="44" y="167" text-anchor="start" class="bd">+ 当前 harness + 经验库 → 目录</text>
+</g>
+<g class="stp" id="ppc-s2">
+<rect class="shape bx" x="325" y="80" width="255" height="104" rx="12"/>
+<text x="339" y="106" text-anchor="start" class="bt">② 写“传票”</text>
+<text x="339" y="129" text-anchor="start" class="bd">context.mission(tree, job)</text>
+<text x="339" y="148" text-anchor="start" class="bd">几行字：目录在哪、要干什么</text>
+<text x="339" y="167" text-anchor="start" class="bd">“去读它，别只凭这条消息作答”</text>
+</g>
+<g class="stp" id="ppc-s3">
+<rect class="shape bx" x="620" y="80" width="255" height="104" rx="12"/>
+<text x="634" y="106" text-anchor="start" class="bt">③ 开一次改进会话</text>
+<text x="634" y="129" text-anchor="start" class="bd">prop.call(...)</text>
+<text x="634" y="148" text-anchor="start" class="bd">编辑器在临时副本里读证据，</text>
+<text x="634" y="167" text-anchor="start" class="bd">直接改 context/harness/ 里的文件</text>
+</g>
+<g class="stp" id="ppc-s4">
+<rect class="shape bx" x="915" y="80" width="255" height="104" rx="12"/>
+<text x="929" y="106" text-anchor="start" class="bt">④ 把文件收回来</text>
+<text x="929" y="129" text-anchor="start" class="bd">read_tree(...)</text>
+<text x="929" y="148" text-anchor="start" class="bd">整个目录空了 → 拒</text>
+<text x="929" y="167" text-anchor="start" class="bd">越界路径 → 拒，并列出文件名</text>
+</g>
+<g class="stp" id="ppc-s5">
+<rect class="shape bx" x="915" y="255" width="255" height="104" rx="12"/>
+<text x="929" y="281" text-anchor="start" class="bt">⑤ 自动补触发行</text>
+<text x="929" y="304" text-anchor="start" class="bd">autotrigger(...)</text>
+<text x="929" y="323" text-anchor="start" class="bd">没被点名的技能，在 guardrails.md</text>
+<text x="929" y="342" text-anchor="start" class="bd">补一行 “When …, load the `x` skill.”</text>
+</g>
+<g class="stp" id="ppc-s6">
+<rect class="shape bx" x="625" y="255" width="250" height="104" rx="12"/>
+<text x="639" y="281" text-anchor="start" class="bt">⑥ 三道校验</text>
+<text x="639" y="304" text-anchor="start" class="bd">tree.validate：上限/技能/脚本…</text>
+<text x="639" y="323" text-anchor="start" class="bd">adapter.validate_tree：基准自查</text>
+<text x="639" y="342" text-anchor="start" class="bd">绊线：不许带任何评分痕迹</text>
+</g>
+<g class="stp" id="ppc-d">
+<path class="shape bx" d="M525,257.0 L597,307.0 L525,357.0 L453,307.0 z"/>
+<text x="525" y="313.0" text-anchor="middle" class="bt">通过？</text>
+</g>
+<g class="stp" id="ppc-ok">
+<rect class="shape ok" x="30" y="255" width="375" height="104" rx="12"/>
+<text x="44" y="281" text-anchor="start" class="bt">✔ 接受这棵新树</text>
+<text x="44" y="304" text-anchor="start" class="bd">返回 Stage(tree=新树, notes=说明)</text>
+<text x="44" y="323" text-anchor="start" class="bd">一处没改 → kept_base=True：</text>
+<text x="44" y="342" text-anchor="start" class="bd">“保留原样”也是正经答案，不算失败</text>
+</g>
+<g class="stp" id="ppc-s7">
+<rect class="shape bad" x="365" y="420" width="320" height="104" rx="12"/>
+<text x="379" y="446" text-anchor="start" class="bt">⑦ 把错误原文贴回去</text>
+<text x="379" y="469" text-anchor="start" class="bd"># YOUR PREVIOUS ATTEMPT WAS REJECTED</text>
+<text x="379" y="488" text-anchor="start" class="bd">+ 全部错误（用 “ | ” 连成一行）</text>
+<text x="379" y="507" text-anchor="start" class="bd">+ “去 context/harness/ 改好再回复”</text>
+</g>
+<g class="stp" id="ppc-s8">
+<rect class="shape fb" x="30" y="420" width="270" height="104" rx="12"/>
+<text x="44" y="446" text-anchor="start" class="bt">⑧ 退回保底树</text>
+<text x="44" y="469" text-anchor="start" class="bd">fell_back=True，用 fallback：</text>
+<text x="44" y="488" text-anchor="start" class="bd">并行 = 基础 harness</text>
+<text x="44" y="507" text-anchor="start" class="bd">串行 = 当前检查点</text>
+</g>
+<path class="ar" d="M285,132.0 L321,132.0"/>
+<path class="ar" d="M580,132.0 L616,132.0"/>
+<path class="ar" d="M875,132.0 L911,132.0"/>
+<path class="ar" d="M1042.5,184 L1042.5,251"/>
+<path class="ar" d="M915,307.0 L879,307.0"/>
+<path class="ar" d="M625,307.0 L601,307.0"/>
+<path class="ar" d="M453,307.0 L409,307.0"/>
+<text x="429.0" y="299.0" text-anchor="middle" style="font-size:13px;font-weight:800;fill:#3d7a46">是</text>
+<path class="arr" d="M525,357.0 L525,416"/>
+<text x="535" y="385.0" text-anchor="start" style="font-size:13px;font-weight:800;fill:#c4402b">否</text>
+<path class="arr" d="M685,472.0 L1185,472.0 L1185,48 L747.5,48 L747.5,76"/>
+<text x="1000" y="464.0" text-anchor="middle" style="font-size:13px;fill:#c4402b;font-weight:700">带着错误再开一次会话</text>
+<text x="1000" y="492.0" text-anchor="middle" style="font-size:12.5px;fill:#c4402b">（STAGE_ATTEMPTS = 2，最多两次）</text>
+<path class="ar" d="M365,472.0 L304,472.0"/>
+<text x="333" y="464.0" text-anchor="middle" style="font-size:12px;fill:#52677a">仍不行</text>
+</svg>

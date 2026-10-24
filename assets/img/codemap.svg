@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-code" viewBox="0 0 1200 700" role="img" aria-label="harness2 代码地图">
+<style>
+.svg-code text { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif; fill:#2a2723; }
+.svg-code .m { font-family: Menlo, Consolas, "JetBrains Mono", monospace; font-size: 14px; font-weight: 700; }
+.svg-code .d { font-size: 12.5px; fill:#5a544b; }
+.svg-code .n { font-size: 11.5px; fill:#8a8378; font-family: Menlo, Consolas, monospace; }
+.svg-code .lay { font-size: 15px; font-weight: 800; }
+.svg-code .p0 { fill:#fff; stroke:#c4402b; stroke-width:3.5; }
+.svg-code .p1 { fill:#fbf0d9; stroke:#b9770e; stroke-width:2; stroke-dasharray:7 5; }
+.svg-code .p2 { fill:#eef2f5; stroke:#8da0b0; stroke-width:1.2; }
+.svg-code .ar { stroke:#7a7368; stroke-width:2.2; fill:none; marker-end:url(#cah); }
+</style>
+<defs><marker id="cah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a7368"/></marker></defs>
+<text x="12" y="32" style="font-size:23px;font-weight:800">代码地图：一条命令是怎么走完的</text>
+<text x="1188" y="32" text-anchor="end" class="d">方框粗细 = 优先级；右下角是行数；点击跳到讲解它的那一站</text>
+<text x="14" y="92" class="lay" style="fill:#8a8378">入口</text>
+<text x="14" y="198" class="lay" style="fill:#b9770e">驱动</text>
+<text x="14" y="312" class="lay" style="fill:#c4402b">方法核心</text>
+<text x="14" y="460" class="lay" style="fill:#b9770e">支撑</text>
+<text x="14" y="592" class="lay" style="fill:#52677a">接缝之外</text>
+<g class="clickable" data-target="ch12" data-tip="命令 harness2：解析参数
+→ schedule.run_sweep()">
+<rect class="shape p2" x="110" y="52" width="250" height="78" rx="12"/>
+<rect x="322" y="60" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="337" y="73" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="122" y="76" class="m">cli/run_sweep.py</text>
+<text x="122" y="98" class="d">命令 harness2：解析参数</text>
+<text x="122" y="116" class="d">→ schedule.run_sweep()</text>
+<text x="350" y="121" text-anchor="end" class="n">239 行</text>
+</g>
+<g class="clickable" data-target="ch7" data-tip="harness2-judge：选完后
+才打分（盲选之后）">
+<rect class="shape p2" x="375" y="52" width="200" height="78" rx="12"/>
+<rect x="537" y="60" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="552" y="73" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="387" y="76" class="m">cli/judge.py</text>
+<text x="387" y="98" class="d">harness2-judge：选完后</text>
+<text x="387" y="116" class="d">才打分（盲选之后）</text>
+<text x="565" y="121" text-anchor="end" class="n">204 行</text>
+</g>
+<g class="clickable" data-target="ch7" data-tip="harness2-report：
+汇总报告">
+<rect class="shape p2" x="590" y="52" width="180" height="78" rx="12"/>
+<rect x="732" y="60" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="747" y="73" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="602" y="76" class="m">cli/report.py</text>
+<text x="602" y="98" class="d">harness2-report：</text>
+<text x="602" y="116" class="d">汇总报告</text>
+<text x="760" y="121" text-anchor="end" class="n">114 行</text>
+</g>
+<g class="clickable" data-target="ch10" data-tip="安装基准、预检
+（preflight）">
+<rect class="shape p2" x="785" y="52" width="190" height="78" rx="12"/>
+<rect x="937" y="60" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="952" y="73" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="797" y="76" class="m">cli/setup · check</text>
+<text x="797" y="98" class="d">安装基准、预检</text>
+<text x="797" y="116" class="d">（preflight）</text>
+</g>
+<g class="clickable" data-target="final" data-tip="离线演示：确定性的
+编辑器 + 真执行">
+<rect class="shape p2" x="990" y="52" width="198" height="78" rx="12"/>
+<rect x="1150" y="60" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="1165" y="73" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="1002" y="76" class="m">demo.py</text>
+<text x="1002" y="98" class="d">离线演示：确定性的</text>
+<text x="1002" y="116" class="d">编辑器 + 真执行</text>
+<text x="1178" y="121" text-anchor="end" class="n">163 行</text>
+</g>
+<g class="clickable" data-target="ch12" data-tip="驱动层：命名空间、任务流顺序、断点续跑都在这里">
+<rect class="shape p1" x="110" y="158" width="1078" height="84" rx="12"/>
+<rect x="1150" y="166" width="30" height="17" rx="8" fill="#b9770e"/>
+<text x="1165" y="179" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P1</text>
+<text x="122" y="182" class="m">core/schedule.py</text>
+<text x="122" y="204" class="d">run_sweep（多领域并发）→ run_domain（领域内按序、把经验库往后传）→ run_task（k 次基础执行 → 每种模式 → 盲选 → summary.json）</text>
+<text x="122" y="222" class="d">→ _run_one_mode：run_mode → selection_pool → run_selection → reflect_adoption → Library.add</text>
+<text x="1178" y="233" text-anchor="end" class="n">850 行</text>
+</g>
+<g class="clickable" data-target="ch2" data-tip="run_parallel（宽）
+run_sequential（深）
+_run_stage：提议+校验+重试">
+<rect class="shape p0" x="110" y="272" width="230" height="118" rx="12"/>
+<rect x="302" y="280" width="30" height="17" rx="8" fill="#c4402b"/>
+<text x="317" y="293" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P0</text>
+<text x="122" y="296" class="m">core/recursion.py</text>
+<text x="122" y="318" class="d">run_parallel（宽）</text>
+<text x="122" y="336" class="d">run_sequential（深）</text>
+<text x="122" y="354" class="d">_run_stage：提议+校验+重试</text>
+<text x="330" y="381" text-anchor="end" class="n">578 行</text>
+</g>
+<g class="clickable" data-target="ch4" data-tip="run_selection 盲选
+reflect_adoption 反思
+_distil 提炼经验">
+<rect class="shape p0" x="352" y="272" width="205" height="118" rx="12"/>
+<rect x="519" y="280" width="30" height="17" rx="8" fill="#c4402b"/>
+<text x="534" y="293" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P0</text>
+<text x="364" y="296" class="m">core/selection.py</text>
+<text x="364" y="318" class="d">run_selection 盲选</text>
+<text x="364" y="336" class="d">reflect_adoption 反思</text>
+<text x="364" y="354" class="d">_distil 提炼经验</text>
+<text x="547" y="381" text-anchor="end" class="n">505 行</text>
+</g>
+<g class="clickable" data-target="ch5" data-tip="Library：按领域
+add / retain / INDEX.md
+存整套 harness">
+<rect class="shape p0" x="569" y="272" width="190" height="118" rx="12"/>
+<rect x="721" y="280" width="30" height="17" rx="8" fill="#c4402b"/>
+<text x="736" y="293" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P0</text>
+<text x="581" y="296" class="m">core/library.py</text>
+<text x="581" y="318" class="d">Library：按领域</text>
+<text x="581" y="336" class="d">add / retain / INDEX.md</text>
+<text x="581" y="354" class="d">存整套 harness</text>
+<text x="749" y="381" text-anchor="end" class="n">222 行</text>
+</g>
+<g class="clickable" data-target="ch3" data-tip="propose（INV / DOM）
+aggregate / compose_round
+select / experience">
+<rect class="shape p0" x="771" y="272" width="215" height="118" rx="12"/>
+<rect x="948" y="280" width="30" height="17" rx="8" fill="#c4402b"/>
+<text x="963" y="293" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P0</text>
+<text x="783" y="296" class="m">core/prompts.py</text>
+<text x="783" y="318" class="d">propose（INV / DOM）</text>
+<text x="783" y="336" class="d">aggregate / compose_round</text>
+<text x="783" y="354" class="d">select / experience</text>
+<text x="976" y="381" text-anchor="end" class="n">1163 行</text>
+</g>
+<g class="clickable" data-target="ch1" data-tip="Tree = {路径: 内容}
+validate / autotrigger
+write_tree / diff">
+<rect class="shape p0" x="998" y="272" width="190" height="118" rx="12"/>
+<rect x="1150" y="280" width="30" height="17" rx="8" fill="#c4402b"/>
+<text x="1165" y="293" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P0</text>
+<text x="1010" y="296" class="m">core/tree.py</text>
+<text x="1010" y="318" class="d">Tree = {路径: 内容}</text>
+<text x="1010" y="336" class="d">validate / autotrigger</text>
+<text x="1010" y="354" class="d">write_tree / diff</text>
+<text x="1178" y="381" text-anchor="end" class="n">427 行</text>
+</g>
+<g class="clickable" data-target="ch9" data-tip="build：把证据写成文件树
+mission：短短的“传票”
+防泄漏绊线">
+<rect class="shape p1" x="110" y="420" width="255" height="104" rx="12"/>
+<rect x="327" y="428" width="30" height="17" rx="8" fill="#b9770e"/>
+<text x="342" y="441" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P1</text>
+<text x="122" y="444" class="m">core/context.py</text>
+<text x="122" y="466" class="d">build：把证据写成文件树</text>
+<text x="122" y="484" class="d">mission：短短的“传票”</text>
+<text x="122" y="502" class="d">防泄漏绊线</text>
+<text x="355" y="515" text-anchor="end" class="n">546 行</text>
+</g>
+<g class="clickable" data-target="ch12" data-tip="Proposer.call：在临时目录里
+跑一次改进会话
+按指纹缓存、harvest 改动">
+<rect class="shape p1" x="377" y="420" width="245" height="104" rx="12"/>
+<rect x="584" y="428" width="30" height="17" rx="8" fill="#b9770e"/>
+<text x="599" y="441" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P1</text>
+<text x="389" y="444" class="m">core/proposer.py</text>
+<text x="389" y="466" class="d">Proposer.call：在临时目录里</text>
+<text x="389" y="484" class="d">跑一次改进会话</text>
+<text x="389" y="502" class="d">按指纹缓存、harvest 改动</text>
+<text x="612" y="515" text-anchor="end" class="n">534 行</text>
+</g>
+<g class="clickable" data-target="ch6" data-tip="预算账本
+R = 4k 次执行
+P = 3k 次改进会话">
+<rect class="shape p1" x="634" y="420" width="190" height="104" rx="12"/>
+<rect x="786" y="428" width="30" height="17" rx="8" fill="#b9770e"/>
+<text x="801" y="441" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P1</text>
+<text x="646" y="444" class="m">core/ledger.py</text>
+<text x="646" y="466" class="d">预算账本</text>
+<text x="646" y="484" class="d">R = 4k 次执行</text>
+<text x="646" y="502" class="d">P = 3k 次改进会话</text>
+<text x="814" y="515" text-anchor="end" class="n">132 行</text>
+</g>
+<g class="clickable" data-target="ch10" data-tip="接缝：BenchmarkAdapter / SubstrateLike（Protocol）
+BenchSpec / ChannelSpec / BenchPrompts（frozen）
+RunView：一次执行的“视图”，从不带分数">
+<rect class="shape p1" x="836" y="420" width="352" height="104" rx="12"/>
+<rect x="1150" y="428" width="30" height="17" rx="8" fill="#b9770e"/>
+<text x="1165" y="441" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P1</text>
+<text x="848" y="444" class="m">core/spec.py</text>
+<text x="848" y="466" class="d">接缝：BenchmarkAdapter / SubstrateLike（Protocol）</text>
+<text x="848" y="484" class="d">BenchSpec / ChannelSpec / BenchPrompts（frozen）</text>
+<text x="848" y="502" class="d">RunView：一次执行的“视图”，从不带分数</text>
+<text x="1178" y="515" text-anchor="end" class="n">277 行</text>
+</g>
+<g class="clickable" data-target="ch10" data-tip="opencode.py（默认执行器）
+codex.py（--substrate cx）
+把组件树装成框架原生文件">
+<rect class="shape p2" x="110" y="552" width="270" height="100" rx="12"/>
+<rect x="342" y="560" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="357" y="573" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="122" y="576" class="m">substrate/</text>
+<text x="122" y="598" class="d">opencode.py（默认执行器）</text>
+<text x="122" y="616" class="d">codex.py（--substrate cx）</text>
+<text x="122" y="634" class="d">把组件树装成框架原生文件</text>
+<text x="370" y="643" text-anchor="end" class="n">395 + 480 行</text>
+</g>
+<g class="clickable" data-target="ch10" data-tip="lab.py · jobbench.py · workbuddy.py
+每个基准一个 Adapter
+（实现 Protocol 里的方法）">
+<rect class="shape p2" x="392" y="552" width="270" height="100" rx="12"/>
+<rect x="624" y="560" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="639" y="573" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="404" y="576" class="m">benchmarks/</text>
+<text x="404" y="598" class="d">lab.py · jobbench.py · workbuddy.py</text>
+<text x="404" y="616" class="d">每个基准一个 Adapter</text>
+<text x="404" y="634" class="d">（实现 Protocol 里的方法）</text>
+</g>
+<g class="clickable" data-target="ch7" data-tip="选完之后才打分
+“方法代码从不导入它”
+失败 = None，绝不当 0 分">
+<rect class="shape p2" x="674" y="552" width="250" height="100" rx="12"/>
+<rect x="886" y="560" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="901" y="573" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="686" y="576" class="m">core/judge.py</text>
+<text x="686" y="598" class="d">选完之后才打分</text>
+<text x="686" y="616" class="d">“方法代码从不导入它”</text>
+<text x="686" y="634" class="d">失败 = None，绝不当 0 分</text>
+<text x="914" y="643" text-anchor="end" class="n">155 行</text>
+</g>
+<g class="clickable" data-target="ch12" data-tip="完成标记 + harness 指纹
+全局配置：并发宽度 2、
+传输重试 2 次">
+<rect class="shape p2" x="936" y="552" width="252" height="100" rx="12"/>
+<rect x="1150" y="560" width="30" height="17" rx="8" fill="#52677a"/>
+<text x="1165" y="573" text-anchor="middle" style="font-size:10.5px;font-weight:800;fill:#fff">P2</text>
+<text x="948" y="576" class="m">runmark.py · config.py</text>
+<text x="948" y="598" class="d">完成标记 + harness 指纹</text>
+<text x="948" y="616" class="d">全局配置：并发宽度 2、</text>
+<text x="948" y="634" class="d">传输重试 2 次</text>
+<text x="1178" y="643" text-anchor="end" class="n">115 + 189 行</text>
+</g>
+<path class="ar" d="M235,130 L235,156"/>
+<path class="ar" d="M640,242 L640,270"/>
+<path class="ar" d="M240,242 L240,270"/>
+<path class="ar" d="M1000,242 L1000,270"/>
+<path class="ar" d="M225,390 L225,418"/>
+<path class="ar" d="M460,390 L480,418"/>
+<path class="ar" d="M720,390 L720,418"/>
+<path class="ar" d="M880,390 L900,418"/>
+<path class="ar" d="M1010,524 L1010,550"/>
+<path class="ar" d="M245,524 L245,550"/>
+<path d="M674,664 H924" stroke="#52677a" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="799" y="684" text-anchor="middle" class="d">↑ judge 与方法隔离：只在盲选“之后”运行</text>
+</svg>

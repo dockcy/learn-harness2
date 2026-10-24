@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-modes" viewBox="0 0 1200 660" role="img" aria-label="并行模式与串行模式对照">
+<style>.svg-modes text{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif;fill:#2a2723} .svg-modes .m{font-family:Menlo, Consolas, "JetBrains Mono", monospace} .svg-modes .pt{font-size:18px;font-weight:800} .svg-modes .pc{font-size:13px;fill:#5a544b} .svg-modes .chip{font-size:12.5px;font-weight:700} .svg-modes .sm{font-size:12px;fill:#6b655b} .svg-modes .ln{stroke:#b8ae9c;stroke-width:1;fill:none} .svg-modes .ar{stroke:#6f685d;stroke-width:2;fill:none;marker-end:url(#ah-svg-modes)} .svg-modes .hist{stroke:#9a6b2f;stroke-width:1.6;fill:none;stroke-dasharray:5 5;marker-end:url(#ah-svg-modes)}</style>
+<defs><marker id="ah-svg-modes" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6f685d"/></marker><marker id="ahr-svg-modes" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c4402b"/></marker></defs>
+<rect x="10" y="12" width="1180" height="310" rx="14" fill="#fbf8f2" stroke="#d9cdb6"/>
+<text x="28" y="42" text-anchor="start" class="pt">并行模式 agg（求“宽”）· 以 k = 3 为例</text>
+<text x="1172" y="42" text-anchor="end" class="pc">执行 R = 3 + 6 + 3 = 12 = 4k　｜　改进会话 P = 6 + 3 = 9 = 3k</text>
+<rect x="30" y="110" width="96" height="26" rx="7" fill="#e9e4da" stroke="#6f685d" stroke-width="1.6"/>
+<text x="78.0" y="127.5" text-anchor="middle" class="chip m" style="fill:#6f685d">base1</text>
+<path d="M131,117.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="30" y="156" width="96" height="26" rx="7" fill="#e9e4da" stroke="#6f685d" stroke-width="1.6"/>
+<text x="78.0" y="173.5" text-anchor="middle" class="chip m" style="fill:#6f685d">base2</text>
+<path d="M131,163.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="30" y="202" width="96" height="26" rx="7" fill="#e9e4da" stroke="#6f685d" stroke-width="1.6"/>
+<text x="78.0" y="219.5" text-anchor="middle" class="chip m" style="fill:#6f685d">base3</text>
+<path d="M131,209.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<text x="78" y="92" text-anchor="middle" class="sm">基础执行 ×k</text>
+<rect x="250" y="66" width="92" height="26" rx="7" fill="#e3eef6" stroke="#2d5b8a" stroke-width="1.6"/>
+<text x="296.0" y="83.5" text-anchor="middle" class="chip m" style="fill:#2d5b8a">inv1</text>
+<path d="M347,73.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="250" y="104" width="92" height="26" rx="7" fill="#f3e8f1" stroke="#8a3f7a" stroke-width="1.6"/>
+<text x="296.0" y="121.5" text-anchor="middle" class="chip m" style="fill:#8a3f7a">dom1</text>
+<path d="M347,111.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="250" y="142" width="92" height="26" rx="7" fill="#e3eef6" stroke="#2d5b8a" stroke-width="1.6"/>
+<text x="296.0" y="159.5" text-anchor="middle" class="chip m" style="fill:#2d5b8a">inv2</text>
+<path d="M347,149.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="250" y="180" width="92" height="26" rx="7" fill="#f3e8f1" stroke="#8a3f7a" stroke-width="1.6"/>
+<text x="296.0" y="197.5" text-anchor="middle" class="chip m" style="fill:#8a3f7a">dom2</text>
+<path d="M347,187.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="250" y="218" width="92" height="26" rx="7" fill="#e3eef6" stroke="#2d5b8a" stroke-width="1.6"/>
+<text x="296.0" y="235.5" text-anchor="middle" class="chip m" style="fill:#2d5b8a">inv3</text>
+<path d="M347,225.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="250" y="256" width="92" height="26" rx="7" fill="#f3e8f1" stroke="#8a3f7a" stroke-width="1.6"/>
+<text x="296.0" y="273.5" text-anchor="middle" class="chip m" style="fill:#8a3f7a">dom3</text>
+<path d="M347,263.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<text x="296" y="300" text-anchor="middle" class="sm">第一阶段：2k 个独立提议</text>
+<text x="296" y="316" text-anchor="middle" class="sm">（读同一份证据，各跑一次）</text>
+<path class="ln" d="M144,123 L250,79"/>
+<path class="ln" d="M144,123 L250,117"/>
+<path class="ln" d="M144,123 L250,155"/>
+<path class="ln" d="M144,123 L250,193"/>
+<path class="ln" d="M144,123 L250,231"/>
+<path class="ln" d="M144,123 L250,269"/>
+<path class="ln" d="M144,169 L250,79"/>
+<path class="ln" d="M144,169 L250,117"/>
+<path class="ln" d="M144,169 L250,155"/>
+<path class="ln" d="M144,169 L250,193"/>
+<path class="ln" d="M144,169 L250,231"/>
+<path class="ln" d="M144,169 L250,269"/>
+<path class="ln" d="M144,215 L250,79"/>
+<path class="ln" d="M144,215 L250,117"/>
+<path class="ln" d="M144,215 L250,155"/>
+<path class="ln" d="M144,215 L250,193"/>
+<path class="ln" d="M144,215 L250,231"/>
+<path class="ln" d="M144,215 L250,269"/>
+<rect x="600" y="100" width="100" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="650.0" y="117.5" text-anchor="middle" class="chip m" style="fill:#b9770e">agg1</text>
+<path d="M705,107.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="600" y="160" width="100" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="650.0" y="177.5" text-anchor="middle" class="chip m" style="fill:#b9770e">agg2</text>
+<path d="M705,167.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="600" y="220" width="100" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="650.0" y="237.5" text-anchor="middle" class="chip m" style="fill:#b9770e">agg3</text>
+<path d="M705,227.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<path class="ln" d="M356,79 L600,113"/>
+<path class="ln" d="M356,79 L600,173"/>
+<path class="ln" d="M356,79 L600,233"/>
+<path class="ln" d="M356,117 L600,113"/>
+<path class="ln" d="M356,117 L600,173"/>
+<path class="ln" d="M356,117 L600,233"/>
+<path class="ln" d="M356,155 L600,113"/>
+<path class="ln" d="M356,155 L600,173"/>
+<path class="ln" d="M356,155 L600,233"/>
+<path class="ln" d="M356,193 L600,113"/>
+<path class="ln" d="M356,193 L600,173"/>
+<path class="ln" d="M356,193 L600,233"/>
+<path class="ln" d="M356,231 L600,113"/>
+<path class="ln" d="M356,231 L600,173"/>
+<path class="ln" d="M356,231 L600,233"/>
+<path class="ln" d="M356,269 L600,113"/>
+<path class="ln" d="M356,269 L600,173"/>
+<path class="ln" d="M356,269 L600,233"/>
+<text x="650" y="300" text-anchor="middle" class="sm">第二阶段：k 个独立合成</text>
+<text x="650" y="316" text-anchor="middle" class="sm">（都看全部候选，彼此看不见，不求共识）</text>
+<rect x="880" y="98" width="290" height="152" rx="12" fill="#fbecea" stroke="#c4402b" stroke-width="2"/>
+<text x="1025" y="126" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#c4402b">盲选池（第4站）</text>
+<rect x="905" y="146" width="70" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="940.0" y="163.5" text-anchor="middle" class="chip m" style="fill:#b9770e">agg1</text>
+<rect x="993" y="146" width="70" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="1028.0" y="163.5" text-anchor="middle" class="chip m" style="fill:#b9770e">agg2</text>
+<rect x="1081" y="146" width="70" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="1116.0" y="163.5" text-anchor="middle" class="chip m" style="fill:#b9770e">agg3</text>
+<text x="1025" y="202" text-anchor="middle" class="sm">只放 k 个最终候选</text>
+<text x="1025" y="222" text-anchor="middle" class="sm">基础执行和中间提议都不进池</text>
+<path class="ar" d="M720,173 L876,173"/>
+<rect x="10" y="338" width="1180" height="310" rx="14" fill="#fbf8f2" stroke="#d9cdb6"/>
+<text x="28" y="368" text-anchor="start" class="pt">串行模式 seq（求“深”）· 以 k = 3 为例</text>
+<text x="1172" y="368" text-anchor="end" class="pc">执行 R = 3 + 6 + 3 = 12 = 4k　｜　改进会话 P = 6 + 3 = 9 = 3k</text>
+<rect x="30" y="430" width="96" height="26" rx="7" fill="#e9e4da" stroke="#6f685d" stroke-width="1.6"/>
+<text x="78.0" y="447.5" text-anchor="middle" class="chip m" style="fill:#6f685d">base1</text>
+<path d="M131,437.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="30" y="476" width="96" height="26" rx="7" fill="#e9e4da" stroke="#6f685d" stroke-width="1.6"/>
+<text x="78.0" y="493.5" text-anchor="middle" class="chip m" style="fill:#6f685d">base2</text>
+<path d="M131,483.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="30" y="522" width="96" height="26" rx="7" fill="#e9e4da" stroke="#6f685d" stroke-width="1.6"/>
+<text x="78.0" y="539.5" text-anchor="middle" class="chip m" style="fill:#6f685d">base3</text>
+<path d="M131,529.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<text x="78" y="412" text-anchor="middle" class="sm">基础执行 ×k</text>
+<text x="78" y="588" text-anchor="middle" class="sm">（和并行共用同一组）</text>
+<rect x="200" y="400" width="210" height="168" rx="12" fill="none" stroke="#cfc4ae" stroke-dasharray="5 4"/>
+<text x="305" y="420" text-anchor="middle" style="font-size:13px;font-weight:800;fill:#6b655b">第 1 轮</text>
+<rect x="216" y="440" width="74" height="26" rx="7" fill="#e3eef6" stroke="#2d5b8a" stroke-width="1.6"/>
+<text x="253.0" y="457.5" text-anchor="middle" class="chip m" style="fill:#2d5b8a">inv1</text>
+<path d="M295,447.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="216" y="488" width="74" height="26" rx="7" fill="#f3e8f1" stroke="#8a3f7a" stroke-width="1.6"/>
+<text x="253.0" y="505.5" text-anchor="middle" class="chip m" style="fill:#8a3f7a">dom1</text>
+<path d="M295,495.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="320" y="464" width="66" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="353.0" y="481.5" text-anchor="middle" class="chip m" style="fill:#b9770e">c1</text>
+<path d="M391,471.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<path class="ar" d="M304,453 L318,473"/>
+<path class="ar" d="M304,501 L318,483"/>
+<path class="ar" d="M144,489 L214,477"/>
+<text x="305" y="554" text-anchor="middle" class="sm">从基础 harness 出发</text>
+<rect x="440" y="400" width="210" height="168" rx="12" fill="none" stroke="#cfc4ae" stroke-dasharray="5 4"/>
+<text x="545" y="420" text-anchor="middle" style="font-size:13px;font-weight:800;fill:#6b655b">第 2 轮</text>
+<rect x="456" y="440" width="74" height="26" rx="7" fill="#e3eef6" stroke="#2d5b8a" stroke-width="1.6"/>
+<text x="493.0" y="457.5" text-anchor="middle" class="chip m" style="fill:#2d5b8a">inv2</text>
+<path d="M535,447.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="456" y="488" width="74" height="26" rx="7" fill="#f3e8f1" stroke="#8a3f7a" stroke-width="1.6"/>
+<text x="493.0" y="505.5" text-anchor="middle" class="chip m" style="fill:#8a3f7a">dom2</text>
+<path d="M535,495.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="560" y="464" width="66" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="593.0" y="481.5" text-anchor="middle" class="chip m" style="fill:#b9770e">c2</text>
+<path d="M631,471.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<path class="ar" d="M544,453 L558,473"/>
+<path class="ar" d="M544,501 L558,483"/>
+<path class="ar" d="M400,477 L454,477"/>
+<text x="545" y="554" text-anchor="middle" class="sm">从上一个检查点出发</text>
+<rect x="680" y="400" width="210" height="168" rx="12" fill="none" stroke="#cfc4ae" stroke-dasharray="5 4"/>
+<text x="785" y="420" text-anchor="middle" style="font-size:13px;font-weight:800;fill:#6b655b">第 3 轮</text>
+<rect x="696" y="440" width="74" height="26" rx="7" fill="#e3eef6" stroke="#2d5b8a" stroke-width="1.6"/>
+<text x="733.0" y="457.5" text-anchor="middle" class="chip m" style="fill:#2d5b8a">inv3</text>
+<path d="M775,447.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="696" y="488" width="74" height="26" rx="7" fill="#f3e8f1" stroke="#8a3f7a" stroke-width="1.6"/>
+<text x="733.0" y="505.5" text-anchor="middle" class="chip m" style="fill:#8a3f7a">dom3</text>
+<path d="M775,495.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<rect x="800" y="464" width="66" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="833.0" y="481.5" text-anchor="middle" class="chip m" style="fill:#b9770e">c3</text>
+<path d="M871,471.0 l9,6 l-9,6 z" fill="#3d7a46"/>
+<path class="ar" d="M784,453 L798,473"/>
+<path class="ar" d="M784,501 L798,483"/>
+<path class="ar" d="M640,477 L694,477"/>
+<text x="785" y="554" text-anchor="middle" class="sm">从上一个检查点出发</text>
+<path class="hist" d="M305,570 C305,620 785,620 785,572"/>
+<text x="545" y="628" text-anchor="middle" class="sm" style="fill:#9a6b2f">后面的轮次能看到之前所有候选和检查点（可复用、可捡回被拒的改动）</text>
+<rect x="930" y="424" width="240" height="140" rx="12" fill="#fbecea" stroke="#c4402b" stroke-width="2"/>
+<text x="1050" y="452" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#c4402b">盲选池（第4站）</text>
+<rect x="948" y="470" width="58" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="977.0" y="487.5" text-anchor="middle" class="chip m" style="fill:#b9770e">c1</text>
+<rect x="1020" y="470" width="58" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="1049.0" y="487.5" text-anchor="middle" class="chip m" style="fill:#b9770e">c2</text>
+<rect x="1092" y="470" width="58" height="26" rx="7" fill="#fff3df" stroke="#b9770e" stroke-width="1.6"/>
+<text x="1121.0" y="487.5" text-anchor="middle" class="chip m" style="fill:#b9770e">c3</text>
+<text x="1050" y="524" text-anchor="middle" class="sm">每一轮的检查点都进池</text>
+<text x="1050" y="544" text-anchor="middle" class="sm">证据始终是同一组基础执行</text>
+<path class="ar" d="M890,477 L926,477"/>
+<path d="M990,300 l9,6 l-9,6 z" fill="#3d7a46"/>
+<text x="1172" y="311" text-anchor="end" class="sm">= 用这棵 harness 真跑一次任务</text>
+</svg>

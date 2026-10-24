@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-arch" viewBox="0 0 1200 710" role="img" aria-label="Harness² 全景图：任务级递归与改进级递归">
+  <style>
+    .svg-arch text { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif; fill: #2a2723; }
+    .svg-arch .tt { font-size: 19px; font-weight: 700; }
+    .svg-arch .en { font-size: 12.5px; fill: #8a8378; font-family: Menlo, Consolas, monospace; }
+    .svg-arch .b { font-size: 14px; fill: #4a453e; }
+    .svg-arch .s { font-size: 12.5px; fill: #6b655b; }
+    .svg-arch .lab { font-size: 16px; font-weight: 700; }
+    .svg-arch .tag { font-size: 11px; font-weight: 800; fill: #fff; }
+    .svg-arch .p0 { fill: #ffffff; stroke: #c4402b; stroke-width: 3.5; }
+    .svg-arch .p1 { fill: #fbf0d9; stroke: #b9770e; stroke-width: 2; stroke-dasharray: 7 5; }
+    .svg-arch .p2 { fill: #e6edf2; stroke: #8da0b0; stroke-width: 1.2; }
+    .svg-arch .ar { stroke: #5a544b; stroke-width: 2.4; fill: none; marker-end: url(#ah); }
+  </style>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5a544b"/></marker>
+    <marker id="ahp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b4c9a"/></marker>
+  </defs>
+
+  <!-- 标题与图例 -->
+  <text x="12" y="34" style="font-size:24px;font-weight:800">Harness² 全景图：两层递归</text>
+  <g transform="translate(700,14)">
+    <rect x="0" y="4" width="34" height="20" rx="5" class="p0"/><text x="42" y="20" class="s">P0 核心主干（必懂）</text>
+    <rect x="180" y="4" width="34" height="20" rx="5" class="p1"/><text x="222" y="20" class="s">P1 关键约束</text>
+    <rect x="320" y="4" width="34" height="20" rx="5" class="p2"/><text x="362" y="20" class="s">P2 工程地基</text>
+  </g>
+
+  <!-- 改进级递归（外圈） -->
+  <rect x="10" y="56" width="1180" height="470" rx="26" fill="#f7f3fb" stroke="#6b4c9a" stroke-width="2.5"/>
+  <text x="1168" y="88" text-anchor="end" class="lab" style="fill:#6b4c9a">改进级递归（跨任务积累经验）</text>
+
+  <!-- 任务级递归（内圈） -->
+  <rect x="30" y="100" width="885" height="322" rx="20" fill="#eef4fa" stroke="#2f5d8a" stroke-width="2"/>
+  <text x="50" y="130" class="lab" style="fill:#2f5d8a">任务级递归（同一个任务 t 之内）</text>
+
+  <!-- 流动的小红点：画在方框下层，只在箭头与回环上露出 -->
+  <circle r="6" opacity="0.9" fill="#c4402b">
+    <animateMotion dur="9s" repeatCount="indefinite" path="M124,276 H308 H494 H670 H836 V210 H1056 V355 V478 H308 V276"/>
+  </circle>
+
+  <!-- 前提：冻结模型 → ch1 -->
+  <g class="clickable" data-target="ch1" data-tip="第 1 站：模型权重冻结，能改的只有它外面的 8 个组件（harness）">
+    <rect class="shape" x="420" y="110" width="482" height="30" rx="15" fill="#2a2723"/>
+    <text x="661" y="130" text-anchor="middle" style="font-size:13.5px;fill:#f6f1e6">前提：模型权重冻结，只改 harness 的 8 个组件 → 第 1 站</text>
+  </g>
+
+  <!-- ① 基础执行 -->
+  <g class="clickable" data-target="ch2" data-tip="第 2 站：用原样的 harness 先跑 k 次，得到可对比的“基准行为”">
+    <rect class="shape p0" x="48" y="152" width="152" height="250" rx="14"/>
+    <circle cx="190" cy="160" r="13" fill="#c4402b"/><text x="190" y="164" text-anchor="middle" class="tag">P0</text>
+    <text x="124" y="190" text-anchor="middle" class="tt">① 基础执行</text>
+    <text x="124" y="210" text-anchor="middle" class="en">base1..basek</text>
+    <text x="124" y="248" text-anchor="middle" class="b">原样 harness</text>
+    <text x="124" y="272" text-anchor="middle" class="b">同一任务跑 k 次</text>
+    <text x="124" y="310" text-anchor="middle" class="s">得到轨迹 + 交付物</text>
+    <text x="124" y="332" text-anchor="middle" class="s">（各阶段共享的证据）</text>
+    <text x="124" y="372" text-anchor="middle" class="s" style="fill:#c4402b">重复的失败 = 真毛病</text>
+  </g>
+
+  <!-- ② 提议 -->
+  <g class="clickable" data-target="ch2" data-tip="第 2 站：编辑器读证据，提出对 harness 的修改">
+    <rect class="shape p0" x="222" y="152" width="172" height="250" rx="14"/>
+    <circle cx="384" cy="160" r="13" fill="#c4402b"/><text x="384" y="164" text-anchor="middle" class="tag">P0</text>
+    <text x="308" y="190" text-anchor="middle" class="tt">② 提议</text>
+    <text x="308" y="210" text-anchor="middle" class="en">Propose</text>
+  </g>
+  <g class="clickable" data-target="ch3" data-tip="第 3 站：INV 只改“怎么做事”（流程、工具、完成检查）">
+    <rect class="shape" x="238" y="226" width="140" height="76" rx="10" fill="#dcebfa" stroke="#2f5d8a" stroke-width="1.6"/>
+    <text x="308" y="256" text-anchor="middle" style="font-size:16px;font-weight:700;fill:#1e4f7d">INV 怎么做</text>
+    <text x="308" y="282" text-anchor="middle" class="s">流程·工具·完成</text>
+  </g>
+  <g class="clickable" data-target="ch3" data-tip="第 3 站：DOM 只改“行家知道什么”（交付物规范、领域规则）">
+    <rect class="shape" x="238" y="312" width="140" height="76" rx="10" fill="#fbeccc" stroke="#b9770e" stroke-width="1.6"/>
+    <text x="308" y="342" text-anchor="middle" style="font-size:16px;font-weight:700;fill:#7a520c">DOM 懂什么</text>
+    <text x="308" y="368" text-anchor="middle" class="s">行家知识·规范</text>
+  </g>
+
+  <!-- ③ 试探 -->
+  <g class="clickable" data-target="ch2" data-tip="第 2 站：每个候选 harness 在同一任务上各跑 1 次">
+    <rect class="shape p0" x="418" y="152" width="152" height="250" rx="14"/>
+    <circle cx="560" cy="160" r="13" fill="#c4402b"/><text x="560" y="164" text-anchor="middle" class="tag">P0</text>
+    <text x="494" y="190" text-anchor="middle" class="tt">③ 试探</text>
+    <text x="494" y="210" text-anchor="middle" class="en">Probe</text>
+    <text x="494" y="248" text-anchor="middle" class="b">每个候选 harness</text>
+    <text x="494" y="272" text-anchor="middle" class="b">各跑 1 次</text>
+    <text x="494" y="310" text-anchor="middle" class="s">inv1..invk</text>
+    <text x="494" y="332" text-anchor="middle" class="s">dom1..domk</text>
+    <text x="494" y="372" text-anchor="middle" class="s" style="fill:#c4402b">看行为变了没有</text>
+  </g>
+
+  <!-- ④ 合成 -->
+  <g class="clickable" data-target="ch2" data-tip="第 2 站：对照轨迹里“哪一刻发生了不同”，合成最终 harness">
+    <rect class="shape p0" x="594" y="152" width="152" height="250" rx="14"/>
+    <circle cx="736" cy="160" r="13" fill="#c4402b"/><text x="736" y="164" text-anchor="middle" class="tag">P0</text>
+    <text x="670" y="190" text-anchor="middle" class="tt">④ 合成</text>
+    <text x="670" y="210" text-anchor="middle" class="en">Compose</text>
+    <text x="670" y="248" text-anchor="middle" class="b">对比轨迹差异</text>
+    <text x="670" y="272" text-anchor="middle" class="b">合并 / 采纳 / 不改</text>
+    <text x="670" y="310" text-anchor="middle" class="s">每条决定都要</text>
+    <text x="670" y="332" text-anchor="middle" class="s">指得出证据</text>
+    <text x="670" y="372" text-anchor="middle" class="s" style="fill:#c4402b">→ k 个最终 harness</text>
+  </g>
+
+  <!-- ⑤ 盲选 -->
+  <g class="clickable" data-target="ch4" data-tip="第 4 站：最终产物匿名、打乱，只看交付物挑一个">
+    <rect class="shape p0" x="770" y="152" width="132" height="250" rx="14"/>
+    <circle cx="892" cy="160" r="13" fill="#c4402b"/><text x="892" y="164" text-anchor="middle" class="tag">P0</text>
+    <text x="836" y="190" text-anchor="middle" class="tt">⑤ 盲选</text>
+    <text x="836" y="210" text-anchor="middle" class="en">Select</text>
+    <text x="836" y="248" text-anchor="middle" class="b">匿名 A/B/C</text>
+    <text x="836" y="272" text-anchor="middle" class="b">只看交付物</text>
+    <text x="836" y="310" text-anchor="middle" class="s">没有分数</text>
+    <text x="836" y="332" text-anchor="middle" class="s">没有标准答案</text>
+    <text x="836" y="372" text-anchor="middle" class="s" style="fill:#c4402b">挑 1 个交付</text>
+  </g>
+
+  <!-- ⑥ 反思 -->
+  <g class="clickable" data-target="ch5" data-tip="第 5 站：逐条判定每处改动的作用，最多提炼一条可迁移的经验">
+    <rect class="shape p0" x="940" y="150" width="232" height="118" rx="14"/>
+    <circle cx="1162" cy="158" r="13" fill="#c4402b"/><text x="1162" y="162" text-anchor="middle" class="tag">P0</text>
+    <text x="1056" y="186" text-anchor="middle" class="tt">⑥ 反思</text>
+    <text x="1056" y="205" text-anchor="middle" class="en">Reflect</text>
+    <text x="1056" y="232" text-anchor="middle" class="b">逐条判定每处改动</text>
+    <text x="1056" y="254" text-anchor="middle" class="s">最多提炼 1 条可迁移经验</text>
+  </g>
+
+  <!-- ⑦ 经验库（圆柱） -->
+  <g class="clickable" data-target="ch5" data-tip="第 5 站：按领域存放被采纳的整套 harness + 经验条目">
+    <path class="shape p0" d="M940,312 a116,18 0 0,1 232,0 v86 a116,18 0 0,1 -232,0 z"/>
+    <path d="M940,312 a116,18 0 0,0 232,0" fill="none" stroke="#c4402b" stroke-width="2"/>
+    <text x="1056" y="352" text-anchor="middle" class="tt">⑦ 经验库</text>
+    <text x="1056" y="372" text-anchor="middle" class="en">Library（按领域）</text>
+    <text x="1056" y="396" text-anchor="middle" class="s">整套 harness + EXPERIENCE.md</text>
+  </g>
+
+  <!-- 主流程箭头 -->
+  <path class="ar" d="M200,276 H218"/>
+  <path class="ar" d="M394,276 H414"/>
+  <path class="ar" d="M570,276 H590"/>
+  <path class="ar" d="M746,276 H766"/>
+  <path class="ar" d="M902,210 H936"/>
+  <path class="ar" d="M1056,268 V290"/>
+  <!-- 回环：下一个任务 -->
+  <path d="M1056,418 V478 H308 V406" fill="none" stroke="#6b4c9a" stroke-width="3" stroke-dasharray="9 6" marker-end="url(#ahp)"/>
+  <text x="682" y="468" text-anchor="middle" style="font-size:15px;font-weight:700;fill:#6b4c9a">回到同领域的下一个任务：提议 / 合成时读取经验库</text>
+  <text x="682" y="505" text-anchor="middle" class="s">只读“本领域、更早的任务”；不同领域可以并发</text>
+
+  <!-- P1 约束带 -->
+  <rect x="10" y="545" width="1180" height="70" rx="16" class="p1"/>
+  <text x="30" y="586" style="font-size:15px;font-weight:800;fill:#8a5a08">P1 贯穿全程的约束</text>
+  <g class="clickable" data-target="ch6" data-tip="第 6 站：并行（宽）与串行（深）两种递归，预算严格相同">
+    <rect class="shape" x="190" y="560" width="232" height="40" rx="20" fill="#fff" stroke="#b9770e" stroke-width="2"/>
+    <text x="306" y="586" text-anchor="middle" class="b">第6站｜并行·串行 · R=4k P=3k</text>
+  </g>
+  <g class="clickable" data-target="ch7" data-tip="第 7 站：上下文里永远没有答案和分数；绊线防止评分结果泄漏">
+    <rect class="shape" x="436" y="560" width="232" height="40" rx="20" fill="#fff" stroke="#b9770e" stroke-width="2"/>
+    <text x="552" y="586" text-anchor="middle" class="b">第7站｜无答案 · 防泄漏绊线</text>
+  </g>
+  <g class="clickable" data-target="ch8" data-tip="第 8 站：只写改动、校验、一次重试、失败回退">
+    <rect class="shape" x="682" y="560" width="232" height="40" rx="20" fill="#fff" stroke="#b9770e" stroke-width="2"/>
+    <text x="798" y="586" text-anchor="middle" class="b">第8站｜编辑契约 · 校验重试</text>
+  </g>
+  <g class="clickable" data-target="ch9" data-tip="第 9 站：证据以文件形式给出，提示词只是指路；证据是数据不是指令">
+    <rect class="shape" x="928" y="560" width="244" height="40" rx="20" fill="#fff" stroke="#b9770e" stroke-width="2"/>
+    <text x="1050" y="586" text-anchor="middle" class="b">第9站｜证据即文件 · ≠指令</text>
+  </g>
+
+  <!-- P2 地基 -->
+  <rect x="10" y="628" width="1180" height="70" rx="16" class="p2"/>
+  <text x="30" y="669" style="font-size:15px;font-weight:800;fill:#3c4f60">P2 工程地基</text>
+  <g class="clickable" data-target="ch10" data-tip="第 10 站：方法 / 底座 / 基准三轴解耦，用 Protocol 定义接缝">
+    <rect class="shape" x="190" y="643" width="300" height="40" rx="10" fill="#fff" stroke="#8da0b0" stroke-width="1.4"/>
+    <text x="340" y="669" text-anchor="middle" class="b">第10站｜三轴解耦 · Protocol 接缝</text>
+  </g>
+  <g class="clickable" data-target="ch11" data-tip="第 11 站：配置是不可变的“值”，创建时就校验">
+    <rect class="shape" x="510" y="643" width="300" height="40" rx="10" fill="#fff" stroke="#8da0b0" stroke-width="1.4"/>
+    <text x="660" y="669" text-anchor="middle" class="b">第11站｜frozen dataclass · 创建即校验</text>
+  </g>
+  <g class="clickable" data-target="ch12" data-tip="第 12 站：并发执行但按序记账；幂等编号、完成标记、调用缓存 → 断点续跑">
+    <rect class="shape" x="830" y="643" width="342" height="40" rx="10" fill="#fff" stroke="#8da0b0" stroke-width="1.4"/>
+    <text x="1001" y="669" text-anchor="middle" class="b">第12站｜并发有序 · 幂等与断点续跑</text>
+  </g>
+</svg>

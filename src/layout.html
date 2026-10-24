@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不换马，换马具 · Harness² 中文图解教程</title>
+<meta name="description" content="用原创寓言 + 大纲到细节的方式，拆解 google-research/harness2 的设计与代码。全中文、可交互、可直接部署到 GitHub Pages。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<button class="menu-btn" type="button" aria-label="打开目录">≡ 目录</button>
+<div class="layout">
+<aside class="side" id="side">
+  <a class="brand" href="#top">不换马，换马具<small>Harness² 中文图解教程</small></a>
+  <div class="progress"><i id="progress-bar"></i></div>
+  <div class="progress-label" id="progress-label">已揭晓 0 / 12 个谜底</div>
+  <div class="legend"><span class="badge p0">P0 核心主干</span><span class="badge p1">P1 关键约束</span><span class="badge p2">P2 工程地基</span></div>
+  <nav class="nav">
+<!--NAV-->
+  </nav>
+  <div class="hint">灰色模糊的小字是每一站的“谜底”。读完寓言、点“揭开谜底”后才会显示。进度只保存在你自己的浏览器里。<br><a href="#" id="reset-progress">清空进度</a></div>
+</aside>
+<main class="main" id="top">
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">开源项目拆解 · google-research/harness2</div>
+    <h1>不换马，换马具：<br>Harness² 图解教程</h1>
+    <p class="lead">模型的权重一个都不动，只改它身上那套“马具”——提示词、护栏、技能、脚本、插件——而且每做完一个任务，就把学到的经验带到下一个任务。这份教程用 12 则原创寓言领路，先给你一张全景大纲，再逐站拆开设计与代码。</p>
+    <div class="meta"><span>14 个章节</span><span>12 则寓言</span><span>14 个动手演示</span><span>全部中文图示</span><span>对应源码 commit 1cfe254</span></div>
+  </header>
+  <div class="box note"><b>怎么读这份教程</b>① 先读<strong>序章</strong>的全景图：红色粗框是必须先懂的主干（P0），琥珀虚线是关键约束（P1），石青细框是工程地基（P2）。② 每一站先读<strong>寓言</strong>，自己猜猜它在讲哪个设计，再点“揭开谜底”。③ 谜底下面是对照表、流程图、带中文注释的源码节选和动手演示。④ 赶时间？只读 P0 的五站，就能讲清楚这个项目在做什么。</div>
+<!--CHAPTERS-->
+  <footer>
+    <p>本教程为第三方学习材料，与 Google 无隶属关系。文中源码节选来自 <a href="https://github.com/google-research/harness2">google-research/harness2</a>（© 2026 Google LLC，Apache License 2.0），节选处已注明文件名并加了中文注释；所有寓言、图示与交互演示为本仓库原创。</p>
+    <p>论文：<a href="https://arxiv.org/abs/2610.14224">arXiv:2610.14224</a> · 教程仓库：<a href="https://github.com/dockcy/learn-harness2">dockcy/learn-harness2</a></p>
+  </footer>
+</div>
+</main>
+</div>
+<div class="tooltip" id="tooltip"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

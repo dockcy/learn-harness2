@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-comp" viewBox="0 0 1200 660" role="img" aria-label="harness 的八个组件围绕冻结的模型">
+<style>.svg-comp text{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif;fill:#2a2723} .svg-comp .m{font-family:Menlo, Consolas, "JetBrains Mono", monospace} .svg-comp .ct{font-size:15px;font-weight:800} .svg-comp .cp{font-size:12px;fill:#6b655b} .svg-comp .cf{font-size:12.5px;fill:#4a453e} .svg-comp .gh{font-size:14px;font-weight:800} .svg-comp .badge{font-size:11px;font-weight:800;fill:#fff} .svg-comp .card{fill:#fffdf8;stroke-width:2}</style>
+<defs><marker id="ah-svg-comp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6f685d"/></marker><marker id="ahr-svg-comp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c4402b"/></marker></defs>
+<text x="20" y="34" text-anchor="start" style="font-size:22px;font-weight:800">第1站｜一副“马具”的八个部件（以默认执行器 OpenCode 为例）</text>
+<text x="1180" y="34" text-anchor="end" style="font-size:13px;fill:#6b655b">点击任一部件看详解</text>
+<path d="M380,126.0 L482,265.1" stroke="#2f6f5e" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M380,256.0 L482,310.6" stroke="#2f6f5e" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M380,386.0 L482,356.1" stroke="#2f6f5e" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M380,516.0 L482,401.6" stroke="#2f6f5e" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M820,126.0 L718,265.1" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M820,256.0 L718,310.6" stroke="#6a4c93" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M820,386.0 L718,356.1" stroke="#2d5b8a" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<path d="M820,516.0 L718,401.6" stroke="#8a6d1f" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".7"/>
+<circle cx="600" cy="340" r="170" fill="none" stroke="#b8ae9c" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text x="600" y="162" text-anchor="middle" style="font-size:13px;fill:#6b655b">harness = 一棵文件树  dict[路径, 内容]</text>
+<circle cx="600" cy="340" r="112" fill="#efe9dd" stroke="#6f685d" stroke-width="2.5"/>
+<rect x="578" y="278" width="44" height="34" rx="6" fill="#6f685d"/>
+<path d="M587,278 v-12 a13,13 0 0 1 26,0 v12" fill="none" stroke="#6f685d" stroke-width="6"/>
+<circle cx="600" cy="294" r="5" fill="#efe9dd"/>
+<text x="600" y="342" text-anchor="middle" style="font-size:24px;font-weight:800">冻结的模型</text>
+<text x="600" y="368" text-anchor="middle" style="font-size:14px;fill:#4a453e">权重一个不改</text>
+<text x="600" y="390" text-anchor="middle" style="font-size:13px;fill:#6b655b">（马不能换）</text>
+<g class="clickable comp" data-comp="c1" data-tip="C1 系统提示｜systemprompt.md｜常驻：身份、目标、做事顺序">
+<rect class="shape card" x="20" y="70" width="360" height="112" rx="12" stroke="#2f6f5e"/>
+<rect x="20" y="70" width="8" height="112" rx="4" fill="#2f6f5e"/>
+<text x="40" y="96" text-anchor="start" class="ct" style="fill:#2f6f5e">C1 系统提示</text>
+<rect x="316" y="80" width="54" height="20" rx="10" fill="#2f6f5e"/>
+<text x="343" y="94" text-anchor="middle" class="badge">常驻</text>
+<text x="40" y="119" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">systemprompt.md</text>
+<text x="40" y="142" text-anchor="start" class="cf">身份、目标、做事顺序</text>
+<text x="40" y="166" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：每趟出发前念的话</text>
+<text x="368" y="166" text-anchor="end" class="cp" style="fill:#2f6f5e;font-weight:700">上下文构建</text>
+</g>
+<g class="clickable comp" data-comp="c2" data-tip="C2 护栏｜guardrails.md｜常驻：必须做 / 绝不做；技能触发行也写在这">
+<rect class="shape card" x="20" y="200" width="360" height="112" rx="12" stroke="#2f6f5e"/>
+<rect x="20" y="200" width="8" height="112" rx="4" fill="#2f6f5e"/>
+<text x="40" y="226" text-anchor="start" class="ct" style="fill:#2f6f5e">C2 护栏</text>
+<rect x="316" y="210" width="54" height="20" rx="10" fill="#2f6f5e"/>
+<text x="343" y="224" text-anchor="middle" class="badge">常驻</text>
+<text x="40" y="249" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">guardrails.md</text>
+<text x="40" y="272" text-anchor="start" class="cf">必须做 / 绝不做；技能触发行也写在这</text>
+<text x="40" y="296" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：路口挂的红布</text>
+<text x="368" y="296" text-anchor="end" class="cp" style="fill:#2f6f5e;font-weight:700">上下文构建</text>
+</g>
+<g class="clickable comp" data-comp="c3" data-tip="C3 长期记忆｜LongTermMEMORY.md｜常驻：跨任务稳定成立的经验">
+<rect class="shape card" x="20" y="330" width="360" height="112" rx="12" stroke="#2f6f5e"/>
+<rect x="20" y="330" width="8" height="112" rx="4" fill="#2f6f5e"/>
+<text x="40" y="356" text-anchor="start" class="ct" style="fill:#2f6f5e">C3 长期记忆</text>
+<rect x="316" y="340" width="54" height="20" rx="10" fill="#2f6f5e"/>
+<text x="343" y="354" text-anchor="middle" class="badge">常驻</text>
+<text x="40" y="379" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">LongTermMEMORY.md</text>
+<text x="40" y="402" text-anchor="start" class="cf">跨任务稳定成立的经验</text>
+<text x="40" y="426" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：驿站的路书</text>
+<text x="368" y="426" text-anchor="end" class="cp" style="fill:#2f6f5e;font-weight:700">上下文构建</text>
+</g>
+<g class="clickable comp" data-comp="c6" data-tip="C6 技能｜skills/&lt;名&gt;/SKILL.md｜按需：被点名才加载的完整流程">
+<rect class="shape card" x="20" y="460" width="360" height="112" rx="12" stroke="#2f6f5e"/>
+<rect x="20" y="460" width="8" height="112" rx="4" fill="#2f6f5e"/>
+<text x="40" y="486" text-anchor="start" class="ct" style="fill:#2f6f5e">C6 技能</text>
+<rect x="316" y="470" width="54" height="20" rx="10" fill="#5f8f3e"/>
+<text x="343" y="484" text-anchor="middle" class="badge">按需</text>
+<text x="40" y="509" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">skills/&lt;名&gt;/SKILL.md</text>
+<text x="40" y="532" text-anchor="start" class="cf">被点名才加载的完整流程</text>
+<text x="40" y="556" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：锦囊</text>
+<text x="368" y="556" text-anchor="end" class="cp" style="fill:#2f6f5e;font-weight:700">上下文构建</text>
+</g>
+<g class="clickable comp" data-comp="c4" data-tip="C4 工具说明｜tool_descriptions/tool_guidance.md｜常驻：什么时候用哪个工具、怎么用">
+<rect class="shape card" x="820" y="70" width="360" height="112" rx="12" stroke="#6a4c93"/>
+<rect x="820" y="70" width="8" height="112" rx="4" fill="#6a4c93"/>
+<text x="840" y="96" text-anchor="start" class="ct" style="fill:#6a4c93">C4 工具说明</text>
+<rect x="1116" y="80" width="54" height="20" rx="10" fill="#2f6f5e"/>
+<text x="1143" y="94" text-anchor="middle" class="badge">常驻</text>
+<text x="840" y="119" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">tool_descriptions/tool_guidance.md</text>
+<text x="840" y="142" text-anchor="start" class="cf">什么时候用哪个工具、怎么用</text>
+<text x="840" y="166" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：岔路口的木牌</text>
+<text x="1168" y="166" text-anchor="end" class="cp" style="fill:#6a4c93;font-weight:700">工具接口</text>
+</g>
+<g class="clickable comp" data-comp="c7" data-tip="C7 脚本｜scripts/&lt;名&gt;.py｜调用时：经 bash 运行的确定性小工具">
+<rect class="shape card" x="820" y="200" width="360" height="112" rx="12" stroke="#6a4c93"/>
+<rect x="820" y="200" width="8" height="112" rx="4" fill="#6a4c93"/>
+<text x="840" y="226" text-anchor="start" class="ct" style="fill:#6a4c93">C7 脚本</text>
+<rect x="1116" y="210" width="54" height="20" rx="10" fill="#6a4c93"/>
+<text x="1143" y="224" text-anchor="middle" class="badge">调用时</text>
+<text x="840" y="249" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">scripts/&lt;名&gt;.py</text>
+<text x="840" y="272" text-anchor="start" class="cf">经 bash 运行的确定性小工具</text>
+<text x="840" y="296" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：秤与尺</text>
+<text x="1168" y="296" text-anchor="end" class="cp" style="fill:#6a4c93;font-weight:700">工具接口</text>
+</g>
+<g class="clickable comp" data-comp="c5" data-tip="C5 子代理｜sub_agents/&lt;名&gt;/AGENT.md｜委派：用 task 工具派活，自带独立上下文">
+<rect class="shape card" x="820" y="330" width="360" height="112" rx="12" stroke="#2d5b8a"/>
+<rect x="820" y="330" width="8" height="112" rx="4" fill="#2d5b8a"/>
+<text x="840" y="356" text-anchor="start" class="ct" style="fill:#2d5b8a">C5 子代理</text>
+<rect x="1116" y="340" width="54" height="20" rx="10" fill="#2d5b8a"/>
+<text x="1143" y="354" text-anchor="middle" class="badge">委派</text>
+<text x="840" y="379" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">sub_agents/&lt;名&gt;/AGENT.md</text>
+<text x="840" y="402" text-anchor="start" class="cf">用 task 工具派活，自带独立上下文</text>
+<text x="840" y="426" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：派出去的小驹</text>
+<text x="1168" y="426" text-anchor="end" class="cp" style="fill:#2d5b8a;font-weight:700">编排</text>
+</g>
+<g class="clickable comp" data-comp="c8" data-tip="C8 插件｜plugin/&lt;名&gt;.ts｜循环内：在工具循环内部生效，模型跳不过">
+<rect class="shape card" x="820" y="460" width="360" height="112" rx="12" stroke="#8a6d1f"/>
+<rect x="820" y="460" width="8" height="112" rx="4" fill="#8a6d1f"/>
+<text x="840" y="486" text-anchor="start" class="ct" style="fill:#8a6d1f">C8 插件</text>
+<rect x="1116" y="470" width="54" height="20" rx="10" fill="#8a6d1f"/>
+<text x="1143" y="484" text-anchor="middle" class="badge">循环内</text>
+<text x="840" y="509" text-anchor="start" class="m cp" style="font-size:12.5px;fill:#5a544b">plugin/&lt;名&gt;.ts</text>
+<text x="840" y="532" text-anchor="start" class="cf">在工具循环内部生效，模型跳不过</text>
+<text x="840" y="556" text-anchor="start" class="cp" style="fill:#9a6b2f">寓言：蹄铁里的机关</text>
+<text x="1168" y="556" text-anchor="end" class="cp" style="fill:#8a6d1f;font-weight:700">中间件</text>
+</g>
+<rect x="20" y="590" width="1160" height="56" rx="10" fill="#f6efe2" stroke="#d9cdb6"/>
+<text x="36" y="613" text-anchor="start" style="font-size:13.5px">常驻四件（C1–C4）每次调用都整段塞进上下文，合计 ≤ 24,000 字符 —— “这里的每个字，都在和代理自己的输出预算抢位置”。</text>
+<text x="36" y="635" text-anchor="start" style="font-size:13px;fill:#5a544b">换成 Codex 执行器：常驻只有 AGENTS.md 一个文件，上限 8,000；技能放 .agents/skills/；钩子写 .codex/hooks.json；没有 plugin 目录。</text>
+</svg>
