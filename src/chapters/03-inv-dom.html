@@ -1,0 +1,99 @@
+<!--meta {"id":"ch3","prio":"p0","no":"第 3 站","short":"3","title":"钟楼的两把钥匙","fable":"钟楼的两把钥匙","concept":"INV（怎么干活）与 DOM（行家知识）两个提议维度","src":["core/prompts.py"]}-->
+<div class="fable">
+<h3>钟楼的两把钥匙</h3>
+<p>修钟匠老许一年到头在路上，哪个镇子的钟楼出了毛病，就请他去。每个镇子他都是头一回去。</p>
+<p>他带两个徒弟，各发一把钥匙。<strong>铜钥匙</strong>开机芯舱：发条、齿轮、擒纵，一座钟“怎么走”全在里面。<strong>银钥匙</strong>开镇公所的历书柜：这个镇子的节气、集日、什么时辰敲几下，一座钟“该怎么报”全在里面。</p>
+<p>老许定了条死规矩：<span class="say">“各管各的锁。拿铜钥匙的不许翻历书，拿银钥匙的不许碰齿轮。”</span></p>
+<p>这回到了青石镇。拿铜钥匙的大徒弟发现，机芯每晚都在同一颗齿上打滑。他想装个卡簧，老许拦住了：<span class="say">“先用最省事的法子。只是上弦顺序错了，就在舱门上贴张条子；要是每天都得数一遍齿，就做个量规；冬至才用得上的那套校准，装进信封写上‘冬至拆’；只有贴了条子还反复被人无视，才上锁扣——而且锁扣不能把正常上弦也锁死。”</span></p>
+<p>拿银钥匙的二徒弟发现，青石镇按旧历赶集，集日要连敲三下，这座钟对此一无所知。他把集日规矩誊进历书。老许翻了翻，又提了两点：<span class="say">“这页规矩，写成‘逢集日翻到这页’，别抄到历书扉页上——扉页人人每天都要念，多一行就得删一行。还有，‘今年腊月初八有庙会’别往里写，那是今年的事，明年就成了错的。”</span></p>
+<p>临走前，老许把两个徒弟的改法合在一起，又在箱子里留了张单子给下一个镇子：哪些是<strong>青石镇才有的</strong>，哪些是<strong>到哪都用得上的</strong>，分开写，标清楚。</p>
+<div class="twist"><p class="aside">猜一猜：铜钥匙和银钥匙，对应 Harness² 里哪两个“提议方向”？</p></div>
+</div>
+<!--REVEAL-->
+<div class="answer">
+<div class="answer-card">
+<h4>谜底：INV 与 DOM —— 两个分工明确的提议维度</h4>
+<p class="big"><strong>INV（铜钥匙）管“代理怎么干活”</strong>：流程、工具使用、怎样算做完——不碰专业内容。<strong>DOM（银钥匙）管“行家知道什么”</strong>：交付物该长什么样、给谁看、为谁做决定、权威来源、必备结构、一致性关系、行家知道要省掉什么——不碰流程。两类编辑器读同一份证据、<strong>各出一版</strong>候选，最后由合成器合并。</p>
+</div>
+
+<h3>故事 ↔ 代码对照</h3>
+<table>
+<tr><th>故事里</th><th>Harness² 里</th></tr>
+<tr><td>铜钥匙 · 机芯舱</td><td>INV 维度：<span class="en">how the agent WORKS</span></td></tr>
+<tr><td>银钥匙 · 历书柜</td><td>DOM 维度：<span class="en">what a PRACTITIONER knows</span></td></tr>
+<tr><td>“各管各的锁”</td><td>两份提示词互相禁止越界：“另一个并行候选负责它”</td></tr>
+<tr><td>贴条子 / 量规 / 冬至信封 / 锁扣</td><td>常驻提示 / 脚本 / 技能 / 循环内杠杆（插件或钩子）</td></tr>
+<tr><td>锁扣不能把正常上弦锁死</td><td><span class="en">It must not block valid completion.</span></td></tr>
+<tr><td>别抄到扉页上，多一行就删一行</td><td>领域知识默认放技能；常驻记忆每次都付费：<span class="en">if you add some, cut some</span></td></tr>
+<tr><td>“今年腊月初八有庙会”别写</td><td>本案事实不能存成长期记忆：它会成为下个任务的错误锚点</td></tr>
+<tr><td>分开写“本镇才有的”和“到哪都用得上的”</td><td>GENERALIZE：工作区事实标注清楚；流程按“领域”来写</td></tr>
+</table>
+
+<h3>INV：失败类型 → 最便宜的有效部件</h3>
+<p>INV 编辑器的任务是：顺着流程找到<strong>最早出现的偏差</strong>，把每个失败对应到最便宜的有效部件。</p>
+<table>
+<tr><th>失败类型</th><th>该怎么改</th><th>落到哪个部件</th></tr>
+<tr><td>工具报错 <span class="en">TOOL ERROR</span></td><td>先分清是输入错、超时、能力缺失、权限还是没读输出；给<strong>一个有边界的备选方案和停止条件</strong>，绝不规定盲目重试</td><td>常驻提示 / 工具说明</td></tr>
+<tr><td>机械重复 <span class="en">MECHANICAL REPETITION</span></td><td>重复的确定性抽取、转换、核对，写成有明确输入输出和失败行为的脚本</td><td>C7 <code>scripts/&lt;名&gt;.py</code></td></tr>
+<tr><td>触发式流程 <span class="en">TRIGGERED WORKFLOW</span></td><td>窄而多步的流程做成按需技能，在常驻文字里写明触发条件，并带上它需要的脚本</td><td>C6 技能 + 触发行</td></tr>
+<tr><td>被无视的硬规矩 <span class="en">IGNORED INVARIANT</span></td><td>只有<strong>反复</strong>证据表明清楚的文字被跳过，才上防御性杠杆；不能挡住正常完成</td><td>C8 插件（Codex 为钩子）</td></tr>
+<tr><td>普通的先后顺序 <span class="en">ORDINARY SEQUENCING</span></td><td>简洁的常驻指引；一次性的错误不写代码，也不要把专业判断自动化</td><td>C1 / C2 常驻文字</td></tr>
+</table>
+<p>INV 还有一条收尾要求：要定义什么叫“证据够了”，给每个交付物留出余量，并<strong>重新打开或机械检查</strong>交付物——<span class="en">“a successful write call does not establish usability”</span>（写入成功不等于可用）。</p>
+
+<h3>DOM：把行家知识变成可检查的规则</h3>
+<table>
+<tr><th>规则形式</th><th>要写清什么</th></tr>
+<tr><td>分析动作 <span class="en">ANALYTIC MOVE</span></td><td>点名操作——比较、核对、计算、分类、追溯、起草、解释——它的输入和要求的结果</td></tr>
+<tr><td>交付物契约 <span class="en">ARTIFACT CONTRACT</span></td><td>必备部分、部分之间的依赖，以及一致性和实用性的领域检查</td></tr>
+<tr><td>决策规则 <span class="en">DECISION RULE</span></td><td>触发条件、支持证据、要解决的冲突、必须明说的不确定性</td></tr>
+<tr><td>编码形式 <span class="en">ENCODING</span></td><td>形式和内容一样要斟酌：有明确触发场景的领域知识，默认放技能（用不到时不花钱，同领域下一个任务也能调用）；常驻记忆只放对<strong>每个任务</strong>都成立的短事实</td></tr>
+</table>
+<div class="box warn"><b>DOM 的两条硬规矩</b>① <strong>绝不编造</strong>权威、编号、标准或引文；要指向有权威的来源，断言需要证据。② 写代理能<strong>执行并检查</strong>的知识，而不是背景读物：“交付前确认 X 覆盖了 A、B、C 每一项”胜过一大段说明。</div>
+
+<h3>“本镇才有的”与“到哪都用得上的”</h3>
+<p>提议提示词里有一段 GENERALIZE，专门讲这件事。它给了三个对照例子（原文照录）：</p>
+<pre class="tree">workspace fact   "attrition role 'HR' maps to position 'HR Manager'; 'Manager' has no
+                  open requisition"                      -- verified here, labelled here
+procedure        "reconcile role names explicitly before joining; list unmatched leftovers"
+too generic      "be thorough"                           -- changes no behaviour</pre>
+<ul>
+<li><strong>工作区事实</strong>（本镇才有的）：基础执行花了代价才发现的、<strong>经过验证</strong>的事实最值钱，直接写事实本身，并用“在本工作区……”标注，让读者分得清事实和流程。猜出来的事实比没有更糟。</li>
+<li><strong>流程</strong>（到哪都用得上的）：要按<strong>整个领域</strong>来写，因为这棵 harness 如果被选中，会存进该领域的经验库，成为后面每个任务的范例（第 5 站）。</li>
+<li><strong>太空泛</strong>：“要仔细”——不改变任何行为。</li>
+</ul>
+
+<pre data-file="harness2/core/prompts.py · _INV_TEMPLATE（节选，中文注释为本教程所加）"><code class="language-python">_INV_TEMPLATE = """\
+# YOUR DIMENSION: INV -- how the agent WORKS
+
+You own procedure, tool use and completion -- not subject matter. Trace the workflow, fix its
+earliest observed divergence, and match each failure to the cheapest effective component:
+...
+Do not add professional rules, required domain sections or matter facts. A parallel candidate
+owns them; stay focused on how the agent works."""
+# ↑ 末尾这句就是“拿铜钥匙的不许翻历书”。DOM 模板的结尾对称地写着：
+#   "Do not diagnose commands, retries, reading order, output paths, budgeting, scripts or hooks.
+#    A parallel candidate owns procedure; stay on practitioner knowledge."</code></pre>
+<div class="box note"><b>教学解读：为什么要拆成两个维度？</b>如果让几个编辑器读同一份证据、各自“随便改”，它们很可能挤向同一个最显眼的修复，候选之间差别很小，试探就浪费了。强制分工后，INV 候选和 DOM 候选天然互补：合成提示词也说，当一个 INV 改动和一个 DOM 改动<strong>各自站得住</strong>时，<strong>合并</strong>就是预期结果。</div>
+
+<div class="widget" data-widget="sort" data-set="invdom" data-title="铜钥匙还是银钥匙？">
+  <div class="w-title">铜钥匙还是银钥匙？给每条观察分个类</div>
+</div>
+
+<div class="quiz" data-answer="1">
+  <div class="qq">DOM 编辑器从材料里读到“本案的申报截止日是 3 月 15 日”，想把这句写进 <code>LongTermMEMORY.md</code>。对吗？</div>
+  <div class="opts">
+    <button class="opt" type="button">A. 对，长期记忆就是用来记东西的</button>
+    <button class="opt" type="button">B. 不对：本案事实存成长期记忆会成为下个任务的错误锚点；若已被证据验证，可以标注“在本工作区……”写进相关组件</button>
+    <button class="opt" type="button">C. 不对：DOM 编辑器不允许写任何事实</button>
+    <button class="opt" type="button">D. 对，但应该写进 systemprompt.md</button>
+  </div>
+  <div class="exp">B。DOM 提示词明说 <span class="en">“Never store this matter's facts as durable memory: they are wrong anchors for the next task.”</span> 同时 GENERALIZE 又说验证过的工作区事实最有价值——两者不矛盾：事实可以写，但要标注清楚，而且不能当成跨任务都成立的长期记忆。</div>
+</div>
+
+<div class="takeaways"><b class="h">本站带走三句话</b><ul>
+<li>INV 管流程、工具和收尾；DOM 管交付物、受众、来源和一致性。两者互不越界。</li>
+<li>INV 的核心是“失败类型 → 最便宜的有效部件”；DOM 的核心是“把行家知识写成可执行、可检查的规则”。</li>
+<li>工作区事实要标注；流程按领域写；空话不写。</li>
+</ul></div>
+</div>

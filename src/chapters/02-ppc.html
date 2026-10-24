@@ -1,0 +1,119 @@
+<!--meta {"id":"ch2","prio":"p0","no":"第 2 站","short":"2","title":"没有考官的厨房","fable":"没有考官的厨房","concept":"提议—试探—合成（Propose–Probe–Compose）","src":["core/recursion.py","core/prompts.py"]}-->
+<div class="fable">
+<h3>没有考官的厨房</h3>
+<p>老秦的小馆有条怪规矩：每天只接一位客人，客人点的一定是店里<strong>从没做过的菜</strong>，要求只有一两句话。没有美食评论家，没有标准菜谱，客人吃完就走，从不打分。</p>
+<p>掌勺的还是那位厨子，手艺改不了。老秦能改的，只有挂在灶台边那一叠“做菜规矩”。</p>
+<p>新菜来了，老秦不急着改规矩。他先让厨子<strong>照老规矩做两锅</strong>，自己站在边上看——不尝味道，只记过程：几时下油、几时翻锅、哪一步手忙脚乱。两锅都在同一步粘了锅。老秦在本子上写：<span class="say">“两锅都粘，是规矩的毛病。”</span>有一锅盐放多了，他想了想，没写：<span class="say">“一锅的事，兴许是手抖。为它改规矩，是冤枉规矩。”</span></p>
+<p>接着，他叫来两个徒弟，让他们对着这两锅的记录，<strong>各自提一版新规矩</strong>。大徒弟盯的是“手上怎么做”，二徒弟盯的是“这道菜在行家眼里该是什么样”。</p>
+<p>“光说不算数。”老秦让厨子照每一版新规矩<strong>真做一锅</strong>。</p>
+<p>四锅做完，老秦把四份过程记录摊在桌上对照。大徒弟那版写了“油热后先离火三秒再下料”，那一锅在老地方果然没粘——这条留下，旁边注明：“老规矩两锅都在这一步粘锅，新规矩这锅在这一步没粘。”二徒弟那版添了一勺糖，可那一锅从头到尾看不出糖起了什么作用——删掉。还有一条“收汁要收到挂勺”，照着做的那锅直接烧糊，什么也没端出来——<span class="say">“端不出菜的改法，说得再好听也不能要。”</span></p>
+<p>最后老秦只合成了<strong>一版</strong>规矩，挂回灶台。</p>
+<p>徒弟问：“师父，要是哪一版都不比老规矩强呢？”老秦说：“那就留着老规矩，这也是答案。白加的规矩，占地方，还碍事。”</p>
+<p>徒弟又问：“没人打分，您怎么知道哪条改对了？”老秦敲了敲那叠记录：</p>
+<p class="say">“每一处改动，都要指得出是哪一锅、哪一刻。指不出来的，就是猜。”</p>
+<div class="twist"><p class="aside">猜一猜：老秦这套“先照常做几锅 → 各提一版改法 → 每版真做一锅 → 对照过程合成一版”的功夫，在 Harness² 里叫什么？</p></div>
+</div>
+<!--REVEAL-->
+<div class="answer">
+<div class="answer-card">
+<h4>谜底：提议—试探—合成（Propose–Probe–Compose）</h4>
+<p class="big">这是 Harness² <strong>任务级递归</strong>的一步：<strong>提议</strong>（Propose）几版 harness 修改 → 每版在同一个任务上真跑一次做<strong>试探</strong>（Probe）→ 根据执行之间的<strong>行为对比</strong>，<strong>合成</strong>（Compose）出一版最终 harness。全程<strong>没有标准答案、没有评分</strong>——信号只来自“同一个任务，不同 harness，过程有什么不同”。</p>
+</div>
+
+<h3>故事 ↔ 代码对照</h3>
+<table>
+<tr><th>故事里</th><th>Harness² 里</th></tr>
+<tr><td>每天一道没做过的菜</td><td>一个新任务（task）</td></tr>
+<tr><td>没有评论家、不打分</td><td>没有标准答案（<span class="en">without ground-truth feedback</span>）</td></tr>
+<tr><td>照老规矩先做两锅</td><td>基础执行（base rollouts）：原样 harness 跑 k 次，这里 k=2</td></tr>
+<tr><td>不尝味道，只记过程</td><td>读执行轨迹（trajectory）：每一步动作、观察、报错</td></tr>
+<tr><td>两个徒弟各提一版</td><td>提议：INV 编辑器和 DOM 编辑器各出一版候选（第 3 站）</td></tr>
+<tr><td>每版真做一锅</td><td>试探：每个候选 harness 在同一任务上执行一次</td></tr>
+<tr><td>摊开四份记录，合成一版</td><td>合成：合成器（aggregator）读全部证据，产出一棵最终 harness</td></tr>
+<tr><td>两锅都粘 = 毛病；一锅盐多 = 手抖</td><td>基础执行里反复出现的失败才是真问题；1/k 的缺陷是噪声</td></tr>
+<tr><td>端不出菜的改法不能要</td><td>关联执行“什么都没交付”的改动视为 UNSAFE</td></tr>
+<tr><td>留着老规矩也是答案</td><td><code>KEEP_BASE</code>：“是正经答案，不是失败”</td></tr>
+<tr><td>指得出哪一锅、哪一刻</td><td>每条决定都要引用具体轨迹时刻，否则就是猜测</td></tr>
+</table>
+
+<h3>三个动作，各管什么</h3>
+<div class="flow">
+  <div class="step p0"><b>提议 Propose</b>编辑器读基础执行的证据，直接改一份 harness 副本。并行模式一次出 2k 版（k 个 INV + k 个 DOM）。</div><div class="arrow">→</div>
+  <div class="step p0"><b>试探 Probe</b>每个候选 harness 在<strong>同一个任务</strong>上真跑一次，得到它自己的轨迹和交付物。</div><div class="arrow">→</div>
+  <div class="step p0"><b>合成 Compose</b>合成器同时看基础执行和所有候选的执行，合并、整版采纳或保持原样，交出一棵树。</div>
+</div>
+<p>注意“试探”这一步的意义：编辑器提出的每条改动只是一个<strong>假设</strong>；只有真跑一次，才能在轨迹里看到它有没有改变行为。合成器做决定靠的就是这些<strong>行为对比</strong>，而不是改动“听起来多有道理”。</p>
+
+<h3>代码里：每一次“提议”或“合成”都走同一条流程</h3>
+<p>不管是 INV 提议、DOM 提议，还是合成，在代码里都是调用同一个函数 <code>recursion._run_stage()</code>，只是传进去的“任务说明”（job）不同。用下面的步进器走一遍：</p>
+<!--SVG:ppc|一次改进会话的流程。失败的提议会带着错误原文重来一次；两次都不行就退回保底树。-->
+<div class="widget" data-widget="stepper" data-title="单步走一遍 _run_stage">
+  <div class="w-title">单步走一遍 <code>_run_stage</code></div>
+  <div class="controls"><button class="btn" type="button" data-act="prev">← 上一步</button><button class="btn primary" type="button" data-act="next">下一步 →</button><button class="btn" type="button" data-act="fail">模拟：校验失败</button><button class="btn" type="button" data-act="reset">重来</button></div>
+  <div class="stepper-text">点“下一步”开始。</div>
+</div>
+<pre data-file="harness2/core/recursion.py · _run_stage（节选，中文注释为本教程所加）"><code class="language-python">for attempt in range(1, STAGE_ATTEMPTS + 1):          # STAGE_ATTEMPTS = 2：最多两次
+    reply = prop.call(
+        mission
+        + (f"\n\n# YOUR PREVIOUS ATTEMPT WAS REJECTED\n\n{err}\n\n"   # 上一次的错误原文
+           f"Fix it in `context/harness/` and reply again." if err else ""),
+        tree.root,
+        f"{label}.a{attempt}",
+        harvest="context/harness",        # 会话结束后，把这个目录收回来
+        max_attempts=TRANSPORT_ATTEMPTS,
+    )
+    ...
+    new = harness_tree.read_tree(surface, reply.workspace, rejected=rejected)
+    if not new:                           # 整个目录被删空：拒绝
+        err = "`context/harness/` came back empty -- edit the files, do not delete them all"
+        continue
+    if rejected:                          # 有越界文件：列出来，要求重交
+        err = "these files are off the editable surface and were not applied: " + ...
+        continue
+    kept, err = _accept_tree(surface, adapter, new, fallback, label)   # 补触发 + 三道校验
+    if err:
+        continue                          # 带着错误再来一次
+    return Stage(label=label, dim=dim, tree=new, kept_base=kept, ...)
+
+return Stage(label=label, dim=dim, tree=dict(fallback), fell_back=True, error=err[:400], ...)
+#      ↑ 两次都失败：退回保底树，并把错误记下来</code></pre>
+<div class="box note"><b>一个细节：<code>kept_base</code> 不是失败</b><code>_accept_tree</code> 会先 diff 新树和保底树：如果一个文件都没增、删、改，就记 <code>kept_base=True</code>。这对应提示词里那句 <span class="en">“KEEP_BASE is a real answer, not a failure. Adaptation that the evidence does not argue for is a regression: it costs context and buys nothing.”</span>——没有证据支持的改动本身就是退步：占上下文，换不来任何东西。</div>
+
+<h3>合成器手里的“称重规则”</h3>
+<p>合成是整个方法里最需要判断力的一步。项目给合成器的提示词（<code>prompts.aggregate</code>）开宗明义：<em>你交出的东西就是被采纳的东西……你是最后一道关，合并一条改动就等于替它“洗白”</em>（<span class="en">you are the last gate, and merging an edit launders it</span>）。下面是它的称重规则：</p>
+<table>
+<tr><th>规则（中文意译）</th><th>原文要点</th></tr>
+<tr><td>k 次基础执行来自<strong>同一个分布</strong>，要当成一组看，而不是 k 个独立故事</td><td><span class="en">draws from ONE distribution -- read them as a set</span></td></tr>
+<tr><td>在基础执行里<strong>反复出现</strong>的失败是真问题，是最有力的依据；只出现 1/k 次的是噪声，针对它改就是对单个样本过拟合</td><td><span class="en">A defect in 1/k is noise, and an edit aimed at it is overfitting to one sample.</span></td></tr>
+<tr><td>每个候选只跑了一次，单次好坏都是弱证据；改动要靠轨迹里<strong>某个具体时刻</strong>显示出作用机制才算数</td><td><span class="en">'this looks like good practice' is not evidence; name the moment.</span></td></tr>
+<tr><td>下行风险和上行收益同等看重；关联执行<strong>什么都没交付</strong>的改动，视为不安全</td><td><span class="en">treat that edit as UNSAFE</span></td></tr>
+<tr><td>候选之间意见一致，只是<strong>支持</strong>，不是独立证明（它们共享任务、证据和模型偏见）；意见矛盾就去读轨迹，而不是投票</td><td><span class="en">Agreement is support, not independent proof; contradiction is a reason to inspect the trajectories, not to vote.</span></td></tr>
+<tr><td>三种都是合法结果：跨候选<strong>合并</strong>（INV 和 DOM 各有贡献时最常见）、<strong>整版采纳</strong>一个、<strong>保持原样</strong></td><td><span class="en">MERGE / ADOPT ONE WHOLESALE / KEEP_BASE</span></td></tr>
+</table>
+<p>每条决定都要按固定格式写进 <code>&lt;notes&gt;</code>，例如：</p>
+<pre class="tree">kept    -&gt; inv1: 写完后重新打开文件核对   -&gt; failed in 2/3 base rollouts；inv1 在第 41 步重开文件并修正错列
+dropped -&gt; dom2: “保持专业、认真负责”       -&gt; 与基础执行相比没有任何可观察的行为差异
+dropped -&gt; dom1: 收汁式的强制格式检查       -&gt; dom1 的执行什么都没交付，UNSAFE</pre>
+<p class="code-note">（上面三行是本教程编的示例，格式与提示词要求一致：<code>kept|revised|dropped -&gt; 哪条改动 -&gt; 决定它的轨迹时刻或基础执行规律，涉及集合时写出计数</code>。提示词的解释是：<span class="en">“A decision without evidence attached is a decision the next reader cannot audit.”</span>）</p>
+
+<div class="widget" data-widget="sort" data-set="evidence" data-title="站得住还是站不住？">
+  <div class="w-title">你来当合成器：这条理由站得住吗？</div>
+</div>
+
+<div class="quiz" data-answer="1">
+  <div class="qq">k=3 时，有个缺陷只在 1 次基础执行里出现。为什么合成器不该专门为它改 harness？</div>
+  <div class="opts">
+    <button class="opt" type="button">A. 因为这个缺陷不重要</button>
+    <button class="opt" type="button">B. 三次基础执行来自同一分布，1/3 的缺陷更可能是噪声，针对它改就是对单个样本过拟合</button>
+    <button class="opt" type="button">C. 因为预算不够，只能改最大的问题</button>
+    <button class="opt" type="button">D. 因为基础执行的轨迹不可信</button>
+  </div>
+  <div class="exp">B。就像老秦说的“一锅的事，兴许是手抖”。反复出现的失败才是 harness 的真实属性，也是最值得动手的依据。</div>
+</div>
+
+<div class="takeaways"><b class="h">本站带走三句话</b><ul>
+<li>提议—试探—合成：改动先是假设，真跑一次才有证据，合成只认<strong>行为对比</strong>。</li>
+<li>所有改进会话都走 <code>_run_stage</code>：搭证据 → 开会话 → 收文件 → 校验 → 失败带着错误原文重试一次 → 再失败退回保底树。</li>
+<li>“保持原样”是正经答案；每条决定都要指得出“哪一锅、哪一刻”。</li>
+</ul></div>
+</div>

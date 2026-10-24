@@ -1,0 +1,62 @@
+<!--meta {"id":"overview","prio":"pre","no":"序章 · 大纲","short":"序","title":"先看全景：一张图读懂 Harness²","concept":"全景图 · 优先级 · 代码地图","src":["core/schedule.py","core/recursion.py"]}-->
+<div class="oneline">一句话：<b>模型权重一个都不改</b>。每遇到一个没见过的新任务，先让模型照常干几遍，读这些执行记录，用“<b>提议 → 试探 → 合成</b>”改进这次任务的 <b>harness（马具）</b>，再<b>蒙着眼</b>挑出最好的一版交付；最后把<b>有证据撑腰的经验</b>写进按领域划分的经验库，<b>带给下一个任务</b>。</div>
+
+<h3>名字里的“²”：两层递归</h3>
+<p>Harness² 读作 “Harness 平方”。“平方”指的是两层套在一起的改进循环，它们都不碰模型权重：</p>
+<table>
+<tr><th></th><th>第一层：任务级递归</th><th>第二层：改进级递归</th></tr>
+<tr><td>英文原名</td><td><span class="en">Task-level recursion</span></td><td><span class="en">Harnessing-level recursion</span></td></tr>
+<tr><td>改的是什么</td><td>这一个任务用的<strong>执行 harness</strong>（给干活的代理用）</td><td>跨任务保存的<strong>改进 harness</strong>：经验库里的成品 harness 和经验条目（给“改马具的人”用）</td></tr>
+<tr><td>怎么改</td><td>提议—试探—合成（Propose–Probe–Compose），全程没有标准答案</td><td>每个任务结束后反思：哪些改动真起了作用，写成一条可迁移的经验</td></tr>
+<tr><td>作用范围</td><td>只在当前任务内</td><td>同一领域里，后面的每一个任务</td></tr>
+<tr><td>对应章节</td><td>第 2、3、4、6、8 站</td><td>第 5 站</td></tr>
+</table>
+
+<!--SVG:arch|全景图：上半部分是一次任务内部的流程，紫色虚线是跨任务的经验循环（小红点演示流向）。点任意方框可跳到讲解它的那一站。-->
+
+<h3>优先级：先学什么，后学什么</h3>
+<div class="prio-strip">
+  <div class="p0"><b>P0 核心主干 · 必学</b>第 1–5 站。弄懂“改什么（八个组件）→ 怎么改（提议·试探·合成）→ 往哪改（INV / DOM）→ 怎么挑（盲选）→ 怎么传（经验库）”，就能讲清整个项目。</div>
+  <div class="p1"><b>P1 关键约束 · 想用好就要懂</b>第 6–9 站。预算怎么分、怎样做到全程碰不到答案、编辑结果怎么校验、证据怎么递交。这些约束决定了方法“可信”。</div>
+  <div class="p2"><b>P2 工程地基 · 想改代码再读</b>第 10–12 站。接口怎么解耦、配置怎么防错、并发与断点续跑。想接入自己的基准或执行器时必读。</div>
+</div>
+
+<h3>一个任务的完整旅程（调用链）</h3>
+<p>从敲下命令到经验入库，代码依次经过下面这些函数。方框颜色同样表示优先级：</p>
+<div class="flow">
+  <div class="step p2"><b>① 命令行</b><code>harness2 …</code><br>cli/run_sweep.py 解析参数</div><div class="arrow">→</div>
+  <div class="step p1"><b>② 多领域并发</b><code>run_sweep</code><br>每个领域一条流水线</div><div class="arrow">→</div>
+  <div class="step p1"><b>③ 领域内按序</b><code>run_domain</code><br>经验库往后传</div><div class="arrow">→</div>
+  <div class="step p0"><b>④ 基础执行</b><code>run_task</code><br>原样 harness 跑 k 次</div><div class="arrow">→</div>
+  <div class="step p0"><b>⑤ 提议·试探·合成</b><code>run_mode</code><br>并行或串行</div><div class="arrow">→</div>
+  <div class="step p0"><b>⑥ 盲选</b><code>run_selection</code><br>只看交付物</div><div class="arrow">→</div>
+  <div class="step p0"><b>⑦ 反思入库</b><code>reflect_adoption</code><br><code>Library.add</code></div><div class="arrow">→</div>
+  <div class="step p2"><b>⑧ 事后打分</b><code>harness2-judge</code><br>方法本身从不调用</div>
+</div>
+
+<!--SVG:codemap|代码地图：harness2/ 目录下每个模块属于哪一层、对应哪一站。点方框跳转。-->
+
+<h3>12 站，每站带着一个问题</h3>
+<table>
+<tr><th>站</th><th>寓言</th><th>带着的问题</th></tr>
+<tr><td><span class="badge p0">1</span></td><td>《不能换马的驿站》</td><td>不许改模型权重，那到底能改什么？</td></tr>
+<tr><td><span class="badge p0">2</span></td><td>《没有考官的厨房》</td><td>没有标准答案，怎么知道一处改动有没有用？</td></tr>
+<tr><td><span class="badge p0">3</span></td><td>《钟楼的两把钥匙》</td><td>改动应该往哪两个方向去想？</td></tr>
+<tr><td><span class="badge p0">4</span></td><td>《蒙眼品酒会》</td><td>改出好几版，交哪一版？谁来挑、怎么挑才公平？</td></tr>
+<tr><td><span class="badge p0">5</span></td><td>《老船长的航海日志》</td><td>怎样让下一个任务真正受益，而不是被带偏？</td></tr>
+<tr><td><span class="badge p1">6</span></td><td>《一样多的铲子》</td><td>预算一样，是铺开试，还是一层层往深里挖？</td></tr>
+<tr><td><span class="badge p1">7</span></td><td>《挂铃铛的丝线》</td><td>怎么保证从头到尾碰不到答案和评分？</td></tr>
+<tr><td><span class="badge p1">8</span></td><td>《只标改动的裁缝》</td><td>编辑器交回的修改，怎么防止它把东西改坏？</td></tr>
+<tr><td><span class="badge p1">9</span></td><td>《档案室里的那张纸条》</td><td>证据怎么递给编辑器，又不被证据里的话“带跑”？</td></tr>
+<tr><td><span class="badge p2">10</span></td><td>《打更人的招募告示》</td><td>换一个基准、换一个执行器，要改多少代码？</td></tr>
+<tr><td><span class="badge p2">11</span></td><td>《刻进石碑的章程》</td><td>配置写错了，最早能在什么时候发现？</td></tr>
+<tr><td><span class="badge p2">12</span></td><td>《同时出发的信使》</td><td>并发跑会不会乱？跑到一半断了怎么办？</td></tr>
+</table>
+
+<div class="box fact"><b>它到底有没有用？（来自项目 README）</b>只做<strong>一步</strong> Harness²，就能让 GLM-5 和 Gemini 3.5 Flash 超过它们的基础 harness：WorkBuddy-Bench 最多提升 11.5 分，JobBench 4.5 分，LAB 的部分通过率提升 11.8 个百分点；加大任务级递归的预算 k，还能继续涨。官方支持三个基准（JobBench、LAB、WorkBuddy-Bench）和两个执行器（默认 OpenCode，加 <code>--substrate cx</code> 换成 Codex）。</div>
+
+<div class="takeaways"><b class="h">序章小结</b><ul>
+<li>Harness² = 冻结模型 + 可编辑的 harness + 两层递归。</li>
+<li>主干只有五件事：<strong>改什么、怎么改、往哪改、怎么挑、怎么传</strong>——就是 P0 的五站。</li>
+<li>代码上，方法核心集中在 <code>core/recursion.py</code>、<code>selection.py</code>、<code>library.py</code>、<code>prompts.py</code>、<code>tree.py</code> 五个文件。</li>
+</ul></div>
