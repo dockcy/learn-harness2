@@ -26,7 +26,7 @@ README = f"""# 不换马，换马具：Harness² 中文图解教程
 | 方式 | 地址 |
 | --- | --- |
 | GitHub Pages（推荐，需先开启，见下文） | https://dockcy.github.io/learn-harness2/ |
-| 免配置预览 | https://raw.githack.com/dockcy/learn-harness2/main/index.html |
+| 免配置预览 | https://htmlpreview.github.io/?https://github.com/dockcy/learn-harness2/blob/main/index.html |
 | 纯文字版（GitHub 内直接看） | [docs/](docs/README.md) |
 
 **开启 GitHub Pages**：仓库 **Settings → Pages → Build and deployment**，Source 选 *Deploy from a branch*，
